@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>提现管理列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .checkallbox input{
+            font-size: 15px;
+            position: relative;
+            top: 8px;
+        }
+        .selectbox{
+            height: 38px;
+            width: 180px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid #e6e6e6;
+        }
+        .selectbox>select{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        .imgtr{
+            height: 40px;
+            position: relative;
+            font-size: 0px;
+        }
+        .goodimg{
+            height: 40px;
+            overflow: hidden;
+            font-size: 0;
+        }
+        .goodimg>img{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        .trval{
+            height: 40px;
+            left: 65px;
+            position: absolute;
+            top: 9px;
+            font-size: 14px;
+        }
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .findlist{
+            padding: 15px 0;
+        }
+        .serchnav{
+            display: flex;
+        }
+        .selectu{
+            text-indent: 5px;
+            color: #ccc;
+            font-size: 15px;
+        }
+        .selectu2{
+            color: black;
+            text-indent: 5px;
+            font-size: 15px;
+        }
+        .selectu2>option{
+            color: black;
+        }
+        .selectu>option{
+            color: black;
+        }
+        .btntr>a{
+            border: none;
+        }
+        .el-cascader{
+        }
+
+
+        .productsbox{
+            width: 70%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .listitem>:nth-child(1){
+            width: 30%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+
+        .banitem{
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .banitem2{
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .atitemname{
+            width: 40%;
+            text-align: right;
+
+        }
+        .atitemval{
+            width: 48%;
+            position: relative;
+        }
+        .upimg{
+            width: 60%;
+        }
+        .upimage{
+            width: 120px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            opacity: 0;
+        }
+        .el-radio{
+            line-height: 40px;
+        }
+        .el-textarea{
+            width: 60%;
+        }
+        th{
+            font-weight: bold!important;
+        }
+        .layui-layout-body{
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">提现管理列表（共{{allpagenum}}条记录）</div>
+        <div class="layui-card-body">
+            <div class="layui-row findlist">
+                <div class="layui-col-md9 layui-col-md-offset3">
+                    <div class="">
+                        <div class="layui-form-item layui-form-itemtop">
+                            <div class="serchnav" style="float: right;margin-right: 0px !important;">
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionstime"
+                                            v-model="timeselect"
+                                            placeholder="选择时间类型"
+                                            @change="handleChangetime">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="height: 32px;margin-right: 5px" v-if="timeselect[0]==1">
+                                    <el-date-picker
+                                            v-model="value3"
+                                            type="datetimerange"
+                                            @change="changetime"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期">
+                                    </el-date-picker>
+                                </div>
+                                <div class="block" style="height: 32px;margin-right: 5px" v-if="timeselect[0]==2">
+                                    <el-date-picker
+                                            v-model="value1"
+                                            type="datetime"
+                                            placeholder="选择日期时间">
+                                    </el-date-picker>
+                                </div>
+
+
+
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionsstatus"
+                                            v-model="statusselect"
+                                            placeholder="选择状态"
+                                            @change="handleChangestatus">
+                                    </el-cascader>
+                                </div>
+
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="options2"
+                                            v-model="selectedOptions2"
+                                            placeholder="选择搜索类型"
+                                            @change="handleChange2">
+                                    </el-cascader>
+                                </div>
+                                <div style="margin-right: 5px">
+                                    <el-input type="text" v-model="key" :disabled="selectedOptions2==''" placeholder="请输入搜索类型值"></el-input>
+                                </div>
+                                <div>
+                                    <el-button type="primary" @click="findClient">查找</el-button>
+                                    <!--<button type="submit" class="layui-btn layui-btn-normal" @click="findClient">查找</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" lay-skin="line" >
+                <colgroup>
+                    <col width="100">
+                    <col width="100">
+                    <col width="100">
+                    <col width="100">
+                    <col width="200">
+                    <col width="200">
+                    <col width="100">
+                    <col width="200">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>金额</th>
+                    <th>实际金额</th>
+                    <th>用户id</th>
+                    <th>创建时间</th>
+                    <th>确认时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody v-if="tabledata.length>0">
+                <tr v-for="item in tabledata">
+                    <td>{{item.orderNum}}</td>
+                    <td>{{item.account}}</td>
+                    <td>{{item.realAccount}}</td>
+                    <td>{{item.userId}}</td>
+                    <td>{{gettime(item.createDate)}}</td>
+                    <td>{{gettime(item.confirmDate)}}</td>
+                    <td>
+                        <span v-if="item.status==0" >已申请</span>
+                        <span v-if="item.status==-1" style="color: red">申请失败</span>
+                        <span v-if="item.status==1">已完成</span>
+                    </td>
+                    <td class="btntr">
+                        <a class="layui-btn layui-btn-sm layui-btn-normal" @click="tixianfn(item)" style="width: 70px" v-if="item.status==0">确认提现</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--暂无数据-->
+            <div v-if="tabledata.length==0" class="lodmore" style="width: 100%;height:auto">
+                <div class="noimg"><img src="../../san/style/images/nodata.png" alt=""></div>
+                <div>暂无相关信息</div>
+            </div>
+            <div style="text-align: center" id="showpage">分页</div>
+        </div>
+    </div>
+</div>
+
+<script src="../../san/layui/layui.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form']);
+</script>
+<script>
+    var urlval = geturl()
+    var app = new Vue({
+        el:'#app',
+        data:{
+            tabledata:[],
+            pagenum:1, /*页数*/
+            pagesize:20,/*一页的条数*/
+            allpagenum:'',
+
+            //搜索数据
+            value3: ['',''],
+            value1: '',
+            timeselect:['1'],
+            optionstime:[
+                {value: '1', label: '时间区间',},
+                {value: '2', label: '开始时间',}
+            ],
+            selectplc:'请输入搜索类型值',
+            typeselect:'',
+            optionstype: [
+                {value: '', label: '选择类型',},
+                {value: '1', label: 'app内部页跳转',},
+                {value: '2', label: '跳转网页',}
+            ],
+            statusselect:'',
+            optionsstatus: [
+                {value: '', label: '选择状态',},
+                {value: '0', label: '已申请',},
+                {value: '1', label: '已完成',},
+                {value: '-1', label: '申请失败',}
+            ],
+            selectedOptions2:'',
+            options2: [
+                {value: '', label: '选择搜索类型',},
+                {value: 1, label: 'id搜索',},
+                {value: 2, label: '编号搜索',},
+            ],
+            key:'',
+            searchType:'',
+
+            nowpage:1,
+            status:'',
+            jumpType:'',
+            startDate:'',
+            endDate:'',
+            userId:'',
+            orderNum:'',
+            firstclick:true,
+            clickserch:false,
+        },
+        methods:{
+            /*分页*/
+            clickpage(toget){
+                let _this = this
+                layui.use('laypage', function(){
+                    var laypage = layui.laypage;
+                    laypage.render({
+                        elem: 'showpage'
+                        ,theme: '#1E9FFF'
+                        ,limit: _this.pagesize
+                        ,count: _this.pagenum //数据总数，从服务端得到
+                        ,layout: [ 'prev', 'page', 'next', 'skip','count',]
+                        ,jump: function(obj, first){
+                            //obj包含了当前分页的所有参数，比如：
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            console.log(obj.limit); //得到每页显示的条数
+                            _this.nowpage = obj.curr
+                            if(!_this.firstclick){
+                                if(_this.clickserch){
+                                    _this.clickserch = false
+                                }else {
+                                    _this.getdata(false,false)
+                                }
+                            }else {
+                                _this.firstclick = false
+                            }
+                            //首次不执行
+                            if(!first){
+                                //do something
+                            }
+                        }
+                    });
+                });
+            },
+            timestampToTime(timestamp) {
+                var date = timestamp;//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                var Y = date.getFullYear() + '-';
+                var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                var D = date.getDate() + ' ';
+                var h = date.getHours()
+                if(h<10){
+                    h = '0'+h
+                }
+                h = h + ':';
+                var m = date.getMinutes()
+                if(m<10){
+                    m = '0'+m
+                }
+                m = m + ':';
+                var s = date.getSeconds();
+                if(s<10){
+                    s = '0'+s
+                }
+                return Y+M+D+h+m+s;
+            },
+            handleChangetime(){
+                this.value3 = ['','']
+                this.value1 = ''
+            },//选择时间类型
+            changetime(){
+                console.log(this.value3,'value3')
+            },
+            tixianfn(item){
+                let _this = this
+                this.$confirm('此操作将提现金额, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    var obj = {
+                        orderId:item.id,
+                    }
+                    obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                    var data = {
+                        param:obj,
+                    }
+                    $.ajax({
+                        url:urlval+'/order/confirmCash',//url地址：ip地址+端口号+接口路径
+                        data:data,
+                        type: "POST",
+                        headers:{'token':localStorage.getItem("token")},
+                        success:function (res) {
+                            if(res.code==1){
+                                _this.clickserch = true
+                                _this.getdata(true)
+                            }
+                            _this.$message({
+                                type: 'success',
+                                message: res.msg+'!'
+                            });
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    });
+                });
+            },
+            gettime(timestamp) {
+                if(timestamp!=null&&timestamp!=undefined){
+                    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                    var Y = date.getFullYear() + '-';
+                    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                    var D = date.getDate() + ' ';
+                    var h = date.getHours()
+                    if(h<10){
+                        h = '0'+h
+                    }
+                    h = h + ':';
+                    var m = date.getMinutes()
+                    if(m<10){
+                        m = '0'+m
+                    }
+                    m = m + ':';
+                    var s = date.getSeconds();
+                    if(s<10){
+                        s = '0'+s
+                    }
+                    return Y+M+D+h+m+s;
+                }
+            },
+            handleChange2(){
+                if(this.selectedOptions2.length>0){
+                    if(this.selectedOptions2[0]==''){
+                        this.searchType = ''
+                        this.key = ''
+                        this.selectedOptions2 = ''
+                    }else {
+                        this.searchType = this.selectedOptions2[0]
+                    }
+                }
+            },
+            handleChangestatus(){
+                if(this.statusselect.length>0){
+                    this.status = this.statusselect[0]
+                }
+            },
+            findClient(){
+                this.clickserch = true
+                this.getdata(true)
+            },
+            getdata(type){
+                let _this = this
+                this.startDate = ''
+                this.endDate = ''
+                if(this.timeselect[0]=='1'){
+                    if(this.value3!=null&&this.value3[0]){
+                        this.startDate = this.gettime(this.value3[0])
+                    }
+                    if(this.value3!=null&&this.value3[1]){
+                        this.endDate = this.gettime(this.value3[1])
+                    }
+                }else if(this.timeselect[0]=='2'){
+                    if(this.value1){
+                        this.startDate = this.gettime(this.value1)
+                    }
+                }
+                if(this.searchType==1){
+                    this.userId = this.key
+                    this.orderNum = ''
+                }else if(this.searchType==2){
+                    this.orderNum = this.key
+                    this.userId = ''
+                }else {
+                    this.orderNum = ''
+                    this.userId = ''
+                }
+
+                var obj = {
+                    pageSize:this.pagesize,
+                    pageNum:this.nowpage,
+                }
+                if(this.startDate!=''){
+                    obj['startDate'] = this.startDate
+                }
+                if(this.endDate!=''){
+                    obj['endDate'] = this.endDate
+                }
+                if(this.userId!=''){
+                    obj['userId'] = this.userId
+                }
+                if(this.status!=''){
+                    obj['status'] = this.status
+                }
+                if(this.orderNum!=''){
+                    obj['orderNum'] = this.orderNum
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/order/cashManager',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        if(res.data.page.list){
+                            _this.tabledata = res.data.page.list
+                            console.log(_this.tabledata,'tabledata')
+                            _this.allpagenum= res.data.page.total
+                            _this.pagenum = res.data.page.total
+                            if(type){
+                                _this.clickpage('toget')
+                            }
+                        }else {
+                            _this.tabledata = []
+                        }
+                    }
+                })
+            },
+        },
+        created(){
+            this.getdata(true)
+        }
+    })
+</script>
+</body>
+</html>
+
+

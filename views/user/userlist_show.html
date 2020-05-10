@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .productsbox{
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+            width: 48%;
+            border: 1px solid  rgb(242,242,242);
+            height: 50px;
+            line-height:50px;
+        }
+        .itemname{
+            background-color: rgb(242,242,242);
+            width: 40%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+            padding: 0 15px;
+            box-sizing: border-box;
+            /*color: white;*/
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            margin-top: 5px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-row">
+                <div class="layui-col-md2">
+                    <div>用户详情</div>
+                </div>
+                <div class="layui-col-md2 layui-col-md-offset8">
+                    <a class="grid-demo" style="display: inline-block" href="userlist.html"> 返回列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">基本信息</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <div class="productsbox">
+                            <div class="listitem">
+                                <div class="itemname">用户:</div>
+                                <div class="imgshow itemval">
+                                    <img :src="atobj.headImgUrl" alt="">
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">用户姓名:</div>
+                                <div class="itemval">
+                                    {{atobj.nickName}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">用户id:</div>
+                                <div class="itemval">
+                                    {{atobj.id}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">角色:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.role==1">普通用户</span>
+                                    <span v-if="atobj.role==2">月会员</span>
+                                    <span v-if="atobj.role==3">年费会员</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员到期时间:</div>
+                                <div class="itemval">
+                                    {{atobj.memberExpireDate}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">出生时间:</div>
+                                <div class="itemval">
+                                    {{atobj.birthday}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">性别:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.sex==0">未知</span>
+                                    <span v-if="atobj.sex==1">男</span>
+                                    <span v-if="atobj.sex==2">女</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">职业:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.jobType==1">学生</span>
+                                    <span v-if="atobj.jobType==2">教师</span>
+                                    <span v-if="atobj.jobType==3">全职妈妈</span>
+                                    <span v-if="atobj.jobType==4">上班族</span>
+                                    <span v-if="atobj.jobType==5">老板</span>
+                                    <span v-if="atobj.jobType==6">公务员</span>
+                                    <span v-if="atobj.jobType==7">自由职业者</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">手机号:</div>
+                                <div class="itemval">
+                                    {{atobj.phone}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">邀请码:</div>
+                                <div class="itemval">
+                                    {{atobj.inviteCode}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">当前状态:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.status==-1" style="color: red">永久封禁</span>
+                                    <span v-if="atobj.status==0" style="color: red">封禁</span>
+                                    <span v-if="atobj.status==1">正常</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">禁封时间:</div>
+                                <div class="itemval">
+                                    {{atobj.closeDate}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">禁封原因:</div>
+                                <div class="itemval">
+                                    {{atobj.closeReason}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">imei:</div>
+                                <div class="itemval">
+                                    {{atobj.registImei}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">openid:</div>
+                                <div class="itemval">
+                                    {{atobj.openid}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">任务余额:</div>
+                                <div class="itemval">
+                                    {{atobj.taskAccount}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">零钱余额:</div>
+                                <div class="itemval">
+                                    {{atobj.account}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">徒弟收入:</div>
+                                <div class="itemval">
+                                    {{atobj.friendAccount}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">收徒奖励:</div>
+                                <div class="itemval">
+                                    {{atobj.friendReward}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">冻结金额:</div>
+                                <div class="itemval">
+                                    {{atobj.freezeAccount}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">提现总额:</div>
+                                <div class="itemval">
+                                    {{atobj.cashAccount}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">注册时间:</div>
+                                <div class="itemval">
+                                    {{atobj.registDate}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">最后登录时间:</div>
+                                <div class="itemval">
+                                    {{atobj.lastLoginDate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../san/layui/layui.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var urlval = geturl()
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+            ,laydate = layui.laydate
+            ,form = layui.form;
+    });
+
+
+</script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            userid:'',
+            atobj:'',
+        },
+        methods:{
+            getdetail(){
+                let _this = this
+                var obj = {
+                    userId:this.userid
+                }
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/user/userDetail',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'Content-Type':'application/json;charset=utf8','token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        _this.atobj = res.data.user
+                    }
+                })
+            },
+        },
+        created(){
+            this.userid=  window.location.href.split('id=')[1]
+            this.getdetail()
+        }
+    })
+</script>
+</body>
+</html>

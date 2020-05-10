@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>任务列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .checkallbox input{
+            font-size: 15px;
+            position: relative;
+            top: 8px;
+        }
+        .selectbox{
+            height: 38px;
+            width: 180px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid #e6e6e6;
+        }
+        .selectbox>select{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        .imgtr{
+            height: 40px;
+            position: relative;
+            font-size: 0px;
+        }
+        .goodimg{
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            font-size: 0;
+        }
+        .goodimg>img{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        .trval{
+            height: 40px;
+            left: 65px;
+            position: absolute;
+            top: 9px;
+            font-size: 14px;
+        }
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .findlist{
+            padding: 15px 0;
+        }
+        .serchnav{
+            display: flex;
+        }
+        .selectu{
+            text-indent: 5px;
+            color: #ccc;
+            font-size: 15px;
+        }
+        .selectu2{
+            color: black;
+            text-indent: 5px;
+            font-size: 15px;
+        }
+        .selectu2>option{
+            color: black;
+        }
+        .selectu>option{
+            color: black;
+        }
+        .btntr>a{
+            border: none;
+        }
+        .el-cascader{
+        }
+
+
+        .productsbox{
+            width: 70%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .listitem>:nth-child(1){
+            width: 30%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+
+        .banitem{
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .banitem2{
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .atitemname{
+            width: 40%;
+            text-align: right;
+
+        }
+        .atitemval{
+            width: 48%;
+            position: relative;
+        }
+        .upimg{
+            width: 60%;
+        }
+        .upimage{
+            width: 120px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            opacity: 0;
+        }
+        .el-radio{
+            line-height: 40px;
+        }
+        .el-textarea{
+            width: 60%;
+        }
+        th{
+            font-weight: bold!important;
+        }
+        .layui-layout-body{
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">任务列表（共{{allpagenum}}条记录）</div>
+        <div class="layui-card-body">
+            <div class="layui-row findlist">
+                <div class="layui-col-md9 layui-col-md-offset3">
+                    <div class="">
+                        <div class="layui-form-item layui-form-itemtop">
+                            <div class="serchnav" style="float: right;margin-right: 0px !important;">
+                                <div>
+                                    <el-button type="primary" style="margin-right: 10px" @click="addlistfn">新增</el-button>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionsshenhe"
+                                            v-model="shenheselect"
+                                            placeholder="审核状态"
+                                            @change="handleChangeshenhe">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionsshangjia"
+                                            v-model="shangjiaselect"
+                                            placeholder="上架状态"
+                                            @change="handleChangeshangjia">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionstuijian"
+                                            v-model="tuijianselect"
+                                            placeholder="推荐状态"
+                                            @change="handleChangetuijian">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionstotop"
+                                            v-model="totopselect"
+                                            placeholder="置顶状态"
+                                            @change="handleChangetotop">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionstype"
+                                            v-model="typeselect"
+                                            placeholder="任务类型"
+                                            @change="handleChangetype">
+                                    </el-cascader>
+                                </div>
+
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="options2"
+                                            v-model="selectedOptions2"
+                                            placeholder="选择搜索类型"
+                                            @change="handleChange2">
+                                    </el-cascader>
+                                </div>
+                                <div style="margin-right: 5px">
+                                    <el-input type="text" v-model="key" :disabled="selectedOptions2==''" :placeholder="selectplc"></el-input>
+                                </div>
+
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="options3"
+                                            placeholder="选择排序"
+                                            v-model="selectedOptions3"
+                                            @change="handleChange3">
+                                    </el-cascader>
+                                </div>
+                                <div>
+                                    <el-button type="primary" @click="findClient">查找</el-button>
+                                    <!--<button type="submit" class="layui-btn layui-btn-normal" @click="findClient">查找</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" lay-skin="line">
+                <colgroup>
+                    <col width="70">
+                    <col width="70">
+                    <col width="120">
+                    <col width="100">
+                    <col width="70">
+                    <col width="100">
+                    <col width="100">
+                    <col width="100">
+                    <col width="70">
+                    <col width="70">
+                    <col width="100">
+                    <col width="100">
+                    <col width="220">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>用户id</th>
+                    <th>标题</th>
+                    <th>项目名</th>
+                    <th>类型</th>
+                    <th>上架状态</th>
+                    <th>是否推荐</th>
+                    <th>是否置顶</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>审核状态</th>
+                    <th>上架时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody v-if="tabledata.length>0">
+                <tr v-for="item in tabledata">
+                    <td>{{item.taskNum}}</td>
+                    <td>{{item.userId}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.projectName}}</td>
+                    <td>{{item.typeval}}</td>
+                    <td>
+                        <span v-if="item.status==1">无</span>
+                        <span v-if="item.status==2">上架</span>
+                        <span v-if="item.status==3" style="color: red">下架</span>
+                        <span v-if="item.status==4" style="color: #FFB800">暂停</span>
+                        <span v-if="item.status==5" style="color: red">强制下架</span>
+                    </td>
+                    <td>
+                        <span v-if="item.recommandStatus==1">不推荐</span>
+                        <span v-if="item.recommandStatus==2" style="color: red">推荐中</span>
+                    </td>
+                    <td>
+                        <span v-if="item.topStatus==1">不置顶</span>
+                        <span v-if="item.topStatus==2"  style="color: red">置顶中</span>
+                    </td>
+                    <td>
+                        {{item.singlePrice}}
+                    </td>
+                    <td>
+                        {{item.totalCount}}
+                    </td>
+                    <td>
+                        <span v-if="item.examineStatus==-1" style="color: red">审核失败</span>
+                        <span v-if="item.examineStatus==0" style="color:#FFB800 ">审核中</span>
+                        <span v-if="item.examineStatus==1">审核成功</span>
+                        <span v-if="item.examineStatus==2" style="color: red">已撤回</span>
+                    </td>
+                    <td>
+                        {{gettime(item.upDate)}}
+                    </td>
+                    <td class="btntr">
+                        <a class="layui-btn layui-btn-sm layui-btn-normal" @click="lookfn(item)">查看</a>
+                        <a class="layui-btn layui-btn-sm layui-btn-normal" @click="shenhefn(item)">审核</a>
+                        <a class="layui-btn layui-btn-sm layui-btn-danger" @click="xiajiafn(item)" style="width: 70px">强制下架</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--暂无数据-->
+            <div v-if="tabledata.length==0" class="lodmore" style="width: 100%;height:auto">
+                <div class="noimg"><img src="../../san/style/images/nodata.png" alt=""></div>
+                <div>暂无相关信息</div>
+            </div>
+            <div style="text-align: center" id="showpage">分页</div>
+            <el-dialog :title="attitle" :visible.sync="addart">
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">任务id：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="taskidarr"
+                                v-model="taskidval"
+                                placeholder="选择id"
+                                @change="handleChangetask">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">星级：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="stararr"
+                                v-model="starval"
+                                placeholder="选择星级"
+                                @change="handleChangestar">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">状态：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="optionsstatus2"
+                                v-model="statusselect2"
+                                placeholder="选择状态"
+                                @change="handleChangestatus2">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem" style="margin-top: 20px">
+                    <div style="width: 100px;text-align: right;margin-right: 10px"></div>
+                    <el-button type="danger" size="mini" style="width: 120px;height: 35px" @click="atsurefn2">确定</el-button>
+                </div>
+            </el-dialog>
+            <el-dialog title="审核任务" :visible.sync="dialogTableVisible">
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">审核状态：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="optionstype2"
+                                v-model="typeselect2"
+                                placeholder="选择类型"
+                                @change="handleChangetype2">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem2" v-if="typeselect2==''||typeselect2[0]=='-1'">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">描述:</div>
+                    <el-input
+                            type="textarea"
+                            :rows="3"
+                            placeholder="请输入内容"
+                            v-model="failDesc">
+                    </el-input>
+                </div>
+                <div class="banitem" style="margin-top: 20px">
+                    <div style="width: 100px;text-align: right;margin-right: 10px"></div>
+                    <el-button type="danger" size="mini" style="width: 120px;height: 35px" @click="atsurefn">确定</el-button>
+                </div>
+            </el-dialog>
+        </div>
+    </div>
+</div>
+
+<script src="../../san/layui/layui.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form']);
+</script>
+<script>
+    var urlval = geturl()
+    var app = new Vue({
+        el:'#app',
+        data:{
+            tabledata:[],
+            pagenum:1, /*页数*/
+            pagesize:20,/*一页的条数*/
+            allpagenum:'',
+            clickserch:false,
+
+            //搜索数据
+            selectplc:'请输入搜索类型值',
+            shenheselect:['0'],
+            optionsshenhe:[
+                {value: '', label: '请选择审核',},
+                {value: '-1', label: '审核失败',},
+                {value: '0', label: '审核中',},
+                {value: '1', label: '审核成功',},
+            ],
+            shangjiaselect:'',
+            optionsshangjia:[
+                {value: '', label: '请选择',},
+                {value: 1, label: '无',},
+                {value: 2, label: '上架',},
+                {value: 3, label: '下架',},
+                {value: 4, label: '暂停',},
+                {value: 5, label: '强制下架',},
+            ],
+            tuijianselect:'',
+            optionstuijian:[
+                {value: '', label: '请选择推荐',},
+                {value: 1, label: '不推荐',},
+                {value: 2, label: '推荐中',},
+            ],
+            totopselect:'',
+            optionstotop:[
+                {value: '', label: '请选择置顶',},
+                {value: 1, label: '不置顶',},
+                {value: 2, label: '置顶中',},
+            ],
+            typeselect:'',
+            optionstype:[
+                {value: '', label: '请选择类型',},
+            ],
+
+            selectedOptions2:'',
+            options2: [
+                {value: '', label: '请选择',},
+                {value: 1, label: 'id',},
+                {value: 2, label: '编号',},
+                {value: 3, label: '标题',},
+                {value: 4, label: '项目名',},
+            ],
+            selectedOptions3:'',
+            options3: [
+                {value: '', label: '选择排序',},
+                {value: 1, label: '最新提交',},
+                {value: 2, label: '总价',},
+                {value: 3, label: '上架时间',},
+                {value: 4, label: '推荐到期时间',},
+                {value: 5, label: '置顶到期时间',},
+            ],
+
+            typelist:[],
+            nowpage:1,
+            firstclick:true,
+            //请求数据字段
+            key:'',
+            searchType:'',
+            examineStatus:'0',
+            status:'',
+            recommandStatus:'',
+            topStatus:'',
+            typeId:'',
+            sortType:'',
+            //审核弹窗
+            dialogTableVisible:false,
+            typeselect2:'',
+            optionstype2:[
+                {value: '-1', label: '审核失败',},
+                {value: '1', label: '审核成功',},
+            ],
+            atid:'',
+            failDesc:'',
+            //新增弹窗
+            addart:false,
+            attitle:'新增类型',
+            atobj:{
+                id:'',
+                star:'',
+                status:'',
+            },
+            starval:'',
+            stararr: [
+                {value: '', label: '选择星级',},
+                {value: '1', label: '1',},
+                {value: '2', label: '2',},
+                {value: '3', label: '3',},
+                {value: '4', label: '4',},
+                {value: '5', label: '5',},
+            ],
+            taskidval:'',
+            taskidarr: [
+                {value: '', label: '选择任务id',},
+            ],
+            statusselect2:'',
+            optionsstatus2: [
+                {value: '', label: '选择状态',},
+                {value: '0', label: '禁用',},
+                {value: '1', label: '启用',}
+            ],
+        },
+        methods:{
+            /*分页*/
+            clickpage(){
+                let _this = this
+                layui.use('laypage', function(){
+                    var laypage = layui.laypage;
+                    laypage.render({
+                        elem: 'showpage'
+                        ,theme: '#1E9FFF'
+                        ,limit: _this.pagesize
+                        ,count: _this.pagenum //数据总数，从服务端得到
+                        ,layout: [ 'prev', 'page', 'next', 'skip','count',]
+                        ,jump: function(obj, first){
+                            //obj包含了当前分页的所有参数，比如：
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            console.log(obj.limit); //得到每页显示的条数
+                            _this.nowpage = obj.curr
+                            if(!_this.firstclick){
+                                if(_this.clickserch){
+                                    _this.clickserch = false
+                                }else {
+                                    _this.getdata(false,false)
+                                }
+                            }else {
+                                _this.firstclick = false
+                            }
+                            //首次不执行
+                            if(!first){
+                                //do something
+                            }
+                        }
+                    });
+                });
+            },
+            gettime(timestamp) {
+                if(timestamp!=null&&timestamp!=undefined){
+                    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                    var Y = date.getFullYear() + '-';
+                    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                    var D = date.getDate() + ' ';
+                    var h = date.getHours()
+                    if(h<10){
+                        h = '0'+h
+                    }
+                    h = h + ':';
+                    var m = date.getMinutes()
+                    if(m<10){
+                        m = '0'+m
+                    }
+                    m = m + ':';
+                    var s = date.getSeconds();
+                    if(s<10){
+                        s = '0'+s
+                    }
+                    return Y+M+D+h+m+s;
+                }
+            },
+            handleChange2(){
+                if(this.selectedOptions2.length>0){
+                    if(this.selectedOptions2[0]==''){
+                        this.searchType = ''
+                        this.key = ''
+                        this.selectedOptions2 = ''
+                    }else {
+                        this.searchType = this.selectedOptions2[0]
+                    }
+                }
+            },
+            handleChangetuijian(){
+                if(this.tuijianselect.length>0){
+                    this.recommandStatus = this.tuijianselect[0]
+                }
+            },
+            handleChangetotop(){
+                if(this.totopselect.length>0){
+                    this.topStatus = this.totopselect[0]
+                }
+            },
+            handleChangeshangjia(){
+                if(this.shangjiaselect.length>0){
+                    this.status = this.shangjiaselect[0]
+                }
+            },
+            handleChangeshenhe(){
+                if(this.shenheselect.length>0){
+                    this.examineStatus = this.shenheselect[0]
+                }
+            },
+            handleChangetype(){
+                if(this.typeselect.length>0){
+                    this.typeselect = this.typeselect[0]
+                }
+            },
+            handleChange3(){
+                if(this.selectedOptions3.length>0){
+                    this.sortType = this.selectedOptions3[0]
+                }
+            },
+            handleChangetype2(){
+                console.log(this.typeselect2)
+            },//弹窗审核下拉
+            handleChangestatus2(){
+                if(this.statusselect2.length>0){
+                    this.atobj.status = this.statusselect2[0]
+                }
+            },
+            handleChangestar(){
+                if(this.starval.length>0){
+                    this.atobj.star = this.starval[0]
+                }
+            },
+            handleChangetask(){
+                if(this.taskidval.length>0){
+                    this.atobj.id = this.taskidval[0]
+                }
+            },
+            addlistfn(){
+                this.attitle = '新增类型'
+                this.atobj = {
+                    id:'',
+                    star:'',
+                    status:'',
+                }
+                this.statusselect2 = ''
+                this.addart = true
+            },
+            atsurefn2(){
+                let _this = this
+                console.log(this.atobj,'this.atobj')
+                if(!this.atobj.star){
+                    layer.msg('请选择星级')
+                    return false
+                }else if(!this.atobj.status){
+                    layer.msg('请选择状态')
+                    return false
+                }
+                var obj = {
+                    taskId:this.atobj.id,
+                    star:this.atobj.star,
+                    status:this.atobj.status,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/task/addHeadTask',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        _this.addart = false
+                        layer.msg(res.msg)
+                    }
+                })
+            },
+            atsurefn(){
+                let _this = this
+                if(this.typeselect2==''){
+                    layer.msg('请选择审核状态')
+                    return false
+                }
+                var obj = {
+                    taskId:this.atid,
+                    examineStatus:this.typeselect2[0],
+                    failDesc:this.failDesc,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/task/examineTask',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        layer.msg(res.msg)
+                        if(res.code==1){
+                            _this.getdata(false,false)
+                        }
+                    _this.dialogTableVisible = false
+                    }
+                })
+            },
+            findClient(){
+                this.clickserch = true
+                this.getdata(true,false)
+            },
+            lookfn(item){
+                window.location.href = 'task_show.html?type=1&id='+item.id
+            },//修改
+            shenhefn(item){
+                if(item.examineStatus==1){
+                    this.typeselect2 = ['1']
+                }else if(item.examineStatus==-1){
+                    this.typeselect2 = ['-1']
+                }
+                this.failDesc = item.failDesc
+                this.atid = item.id
+                this.dialogTableVisible = true
+            },//审核
+            xiajiafn(item){
+                let _this = this
+                this.$confirm('此操作将下架此任务, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    var obj = {
+                        taskId:item.id,
+                    }
+                    obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                    var data = {
+                        param:obj,
+                    }
+                    $.ajax({
+                        url:urlval+'/task/forceDownTask',//url地址：ip地址+端口号+接口路径
+                        data:data,
+                        type: "POST",
+                        headers:{'token':localStorage.getItem("token")},
+                        success:function (res) {
+                            _this.getdata(false,false)
+                            _this.$message({
+                                type: 'success',
+                                message: res.msg+'!'
+                            });
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    });
+                });
+            },//下架
+            setdata(){
+                if(this.typelist.length>0&&this.tabledata.length>0){
+                    for(let i = 0 ;i<this.typelist.length;i++){
+                        for(let j = 0;j<this.tabledata.length;j++){
+                            if(this.typelist[i].id==this.tabledata[j].typeId){
+                                this.tabledata[j]['typeval'] = this.typelist[i].title
+                            }
+                        }
+                    }
+                }
+            },
+            getdata(type,first){
+                let _this = this
+                var obj = {
+                    key:this.key,
+                    searchType:this.searchType,
+                    examineStatus:this.examineStatus,
+                    status:this.status,
+                    recommandStatus:this.recommandStatus,
+                    topStatus:this.topStatus,
+                    typeId:this.typeselect,
+                    sortType:this.sortType,
+                    pageSize:this.pagesize,
+                    pageNum:this.nowpage,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/task/getTaskList',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        if(res.data.page.list){
+                            _this.tabledata = res.data.page.list
+                            _this.allpagenum= res.data.page.total
+                            _this.pagenum = res.data.page.total
+                            _this.setdata()
+                            if(type){
+                                _this.clickpage()
+                            }
+                            if(first){
+                                for(let i = 0;i<res.data.page.list.length;i++){
+                                    var obj = {value: res.data.page.list[i].id, label: res.data.page.list[i].title,}
+                                    _this.taskidarr.push(obj)
+                                }
+                            }
+                        }else {
+                            _this.tabledata = []
+                            _this.allpagenum= res.data.page.total
+                            _this.pagenum = res.data.page.total
+                            _this.setdata()
+                        }
+                    }
+                })
+            },
+            gettype(){
+                let _this = this
+                var obj = {
+                    pageSize:100,
+                    pageNum:1,
+                    status:'',
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/taskType/getAdminTaskTypes',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        _this.typelist = res.data.page.list
+                        if(res.data.page.list.length>0){
+                            var list = res.data.page.list
+                            for(let i = 0;i<list.length;i++){
+                                var obj = {value: list[i].id, label:list[i].title}
+                                _this.optionstype.push(obj)
+                            }
+                        }
+                        _this.getdata(true,true)
+                    }
+                })
+            },
+        },
+        created(){
+            this.gettype()
+        }
+    })
+</script>
+</body>
+</html>
+
+

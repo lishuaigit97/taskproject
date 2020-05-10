@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>会员配置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .productsbox{
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+            width: 48%;
+            height: 50px;
+            line-height:50px;
+        }
+        .itemname{
+            width: 40%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+            padding: 0 15px;
+            box-sizing: border-box;
+            /*color: white;*/
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            margin-top: 5px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-row">
+                <div class="layui-col-md2">
+                    <div>会员配置</div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">会员</li>
+                    <li>非会员</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <div class="productsbox">
+                            <div class="listitem">
+                                <div class="itemname">月会员费用:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.monthMemberAccount" placeholder="请输入月会员费用"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">年会员费用:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.yearMemberAccount" placeholder="请输入年会员费用"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员可发布任务数:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberTaskCount" placeholder="请输入会员可发布任务数"></el-input>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员发布服务费:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberTaskServiceFee" placeholder="请输入会员发布服务费"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">%</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员每天支持刷新次数:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberRefreshCount" placeholder="请输入会员每天支持刷新次数"></el-input>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员提现手续费:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberCashServiceFee" placeholder="请输入会员提现手续费"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">%</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员推荐费用/小时:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberRecommandServiceFee" placeholder="请输入会员推荐费用/小时"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">会员置顶费用/小时:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.memberTopServiceFee" placeholder="请输入会员置顶费用/小时"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname"></div>
+                                <div class="itemval">
+                                    <a class="layui-btn layui-btn-normal" style="width: 110px" @click="savefn">保存</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="productsbox">
+                            <div class="listitem">
+                                <div class="itemname">非会员可发布任务数:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonTaskCount" placeholder="请输入非会员可发布任务数"></el-input>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">非会员发布任务服务费:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonTaskServiceFee" placeholder="请输入非会员发布任务服务费"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">%</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">非会员每天刷新次数:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonRefreshCount" placeholder="请输入非会员每天刷新次数"></el-input>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">非会员提现手续费:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonCashServiceFee" placeholder="请输入非会员提现手续费"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">%</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">非会员推荐费用/小时:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonRecommandServiceFee" placeholder="请输入非会员推荐费用/小时"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">非会员置顶费用/小时:</div>
+                                <div class="itemval">
+                                    <el-input v-model="atobj.commonTopServiceFee" placeholder="请输入非会员置顶费用/小时"></el-input>
+                                </div>
+                                <div style="margin-left: 5px">元</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname"></div>
+                                <div class="itemval">
+                                    <a class="layui-btn layui-btn-normal" style="width: 110px" @click="savefn">保存</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../san/layui/layui.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var urlval = geturl()
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+            ,laydate = layui.laydate
+            ,form = layui.form;
+    });
+
+
+</script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            atobj:'',
+        },
+        methods:{
+            savefn(){
+                let _this = this
+                if(this.atobj.monthMemberAccount==''){
+                    return false
+                    layer.msg('请输入月会员费用')
+                }
+                if(this.atobj.yearMemberAccount==''){
+                    return false
+                    layer.msg('请输入年会员费用')
+                }
+                if(this.atobj.commonTaskCount==''){
+                    return false
+                    layer.msg('请输入非会员可发布任务数')
+                }
+                if(this.atobj.memberTaskCount==''){
+                    return false
+                    layer.msg('请输入会员可发布任务数')
+                }
+                if(this.atobj.commonTaskServiceFee==''){
+                    return false
+                    layer.msg('请输入非会员发布任务服务费')
+                }
+                if(this.atobj.memberTaskServiceFee==''){
+                    return false
+                    layer.msg('请输入会员发布服务费')
+                }
+                if(this.atobj.commonRefreshCount==''){
+                    return false
+                    layer.msg('请输入非会员每天刷新次数')
+                }
+                if(this.atobj.memberRefreshCount==''){
+                    return false
+                    layer.msg('请输入会员每天支持刷新次数')
+                }
+                if(this.atobj.commonCashServiceFee==''){
+                    return false
+                    layer.msg('请输入非会员提现手续费')
+                }
+                if(this.atobj.memberCashServiceFee==''){
+                    return false
+                    layer.msg('请输入会员提现手续费')
+                }
+                if(this.atobj.commonRecommandServiceFee==''){
+                    return false
+                    layer.msg('请输入非会员推荐费用/小时')
+                }
+                if(this.atobj.memberRecommandServiceFee==''){
+                    return false
+                    layer.msg('请输入会员推荐费用/小时')
+                }
+                if(this.atobj.commonTopServiceFee==''){
+                    return false
+                    layer.msg('请输入非会员置顶费用/小时')
+                }
+                if(this.atobj.memberTopServiceFee==''){
+                    return false
+                    layer.msg('请输入会员置顶费用/小时')
+                }
+                var obj = {
+                    monthMemberAccount:this.atobj.monthMemberAccount,
+                    yearMemberAccount:this.atobj.yearMemberAccount,
+                    commonTaskCount:this.atobj.commonTaskCount,
+                    memberTaskCount:this.atobj.memberTaskCount,
+                    commonTaskServiceFee:this.atobj.commonTaskServiceFee,
+                    memberTaskServiceFee:this.atobj.memberTaskServiceFee,
+                    commonRefreshCount:this.atobj.commonRefreshCount,
+                    memberRefreshCount:this.atobj.memberRefreshCount,
+                    commonCashServiceFee:this.atobj.commonCashServiceFee,
+                    memberCashServiceFee:this.atobj.memberCashServiceFee,
+                    commonRecommandServiceFee:this.atobj.commonRecommandServiceFee,
+                    memberRecommandServiceFee:this.atobj.memberRecommandServiceFee,
+                    commonTopServiceFee:this.atobj.commonTopServiceFee,
+                    memberTopServiceFee:this.atobj.memberTopServiceFee,
+                }
+                console.log(obj,'obj')
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/common/updateMemberConfig',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        layer.msg(res.msg)
+                        if(res.code==1){
+                            _this.getdetail()
+                        }
+                    }
+                })
+            },
+            getdetail(){
+                let _this = this
+                var obj = {
+                }
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/common/getMemberConfig',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'Content-Type':'application/json;charset=utf8','token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        _this.atobj = res.data.conf
+                    }
+                })
+            },
+        },
+        created(){
+            this.getdetail()
+        }
+    })
+</script>
+</body>
+</html>

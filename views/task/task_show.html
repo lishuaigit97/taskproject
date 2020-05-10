@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .productsbox{
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+            width: 48%;
+            border: 1px solid  rgb(242,242,242);
+            height: 50px;
+            line-height:50px;
+        }
+        .itemname{
+            background-color: rgb(242,242,242);
+            width: 40%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+            padding: 0 15px;
+            box-sizing: border-box;
+            /*color: white;*/
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            margin-top: 5px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+        .typesbox{
+            width: 100%;
+            height: 500px;
+        }
+        .typesitem{
+            width: 40%;
+            /*height: 50px;*/
+            /*display: flex;*/
+            /*flex-direction: row;*/
+            /*justify-content: flex-start;*/
+            /*flex-wrap: wrap;*/
+            border: 1px solid  rgb(242,242,242);
+            /*line-height: 50px;*/
+            margin-bottom: 15px;
+            line-height: 50px;
+        }
+        .typeschild{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            font-size: 14px;
+        }
+        .itemtitle{
+            width: 120px;
+            height: 100%;
+            background-color: rgb(242,242,242);
+            text-align: right;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        .itemval2{
+            width: 150px;
+            flex: 1;
+            height: 100%;
+            margin-left: 15px;
+        }
+        .buzhouimg{
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-row">
+                <div class="layui-col-md2">
+                    <div>任务详情</div>
+                </div>
+                <div class="layui-col-md2 layui-col-md-offset8">
+                    <a class="grid-demo" style="display: inline-block" @click="goback"> 返回列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">基本信息</li>
+                    <li>分任务</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <div class="productsbox">
+                            <div class="listitem">
+                                <div class="itemname">任务id:</div>
+                                <div class="itemval">{{atobj.id}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">任务编号:</div>
+                                <div class="itemval">{{atobj.taskNum}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">用户id:</div>
+                                <div class="itemval">{{atobj.userId}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">审核状态:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.examineStatus==-1" style="color: red">审核失败</span>
+                                    <span v-if="atobj.examineStatus==0" style="color:#FFB800 ">审核中</span>
+                                    <span v-if="atobj.examineStatus==1">审核成功</span>
+                                    <span v-if="atobj.examineStatus==2" style="color: red">已撤回</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">审核失败描述:</div>
+                                <div class="itemval">
+                                    {{atobj.failDesc}}
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">任务状态:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.status==1">无</span>
+                                    <span v-if="atobj.status==2">上架</span>
+                                    <span v-if="atobj.status==3" style="color: red">下架</span>
+                                    <span v-if="atobj.status==4" style="color: #FFB800">暂停</span>
+                                    <span v-if="atobj.status==5" style="color: red">强制下架</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">推荐状态:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.recommandStatus==1">不推荐</span>
+                                    <span v-if="atobj.recommandStatus==2" style="color: red">推荐中</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">推荐到期时间:</div>
+                                <div class="itemval">{{gettime(atobj.recommandExpireDate)}}</div>
+                            </div>
+
+                            <div class="listitem">
+                                <div class="itemname">任务类型id:</div>
+                                <div class="itemval">{{atobj.typeId}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">支持设备:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.osType==0">不限</span>
+                                    <span v-if="atobj.osType==1">安卓</span>
+                                    <span v-if="atobj.osType==2">苹果</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">项目名:</div>
+                                <div class="itemval">{{atobj.projectName}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">标题:</div>
+                                <div class="itemval">{{atobj.title}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">任务备注:</div>
+                                <div class="itemval">{{atobj.remarks}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">接单限制:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.taskingTime==1">30分钟</span>
+                                    <span v-if="atobj.taskingTime==2">1小时</span>
+                                    <span v-if="atobj.taskingTime==3">6小时</span>
+                                    <span v-if="atobj.taskingTime==4">1天</span>
+                                    <span v-if="atobj.taskingTime==5">5天</span>
+                                    <span v-if="atobj.taskingTime==6">7天</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">审核时间:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.examineTime==1">3小时</span>
+                                    <span v-if="atobj.examineTime==2">6小时</span>
+                                    <span v-if="atobj.examineTime==3">12小时</span>
+                                    <span v-if="atobj.examineTime==4">1天</span>
+                                    <span v-if="atobj.examineTime==5">2天</span>
+                                    <span v-if="atobj.examineTime==6">3天</span>
+                                    <span v-if="atobj.examineTime==7">5天</span>
+                                    <span v-if="atobj.examineTime==8">7天</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">接单限制:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.taskingLimit==1">每人一次</span>
+                                    <span v-if="atobj.taskingLimit==2">每人三次</span>
+                                    <span v-if="atobj.taskingLimit==3">每日一次</span>
+                                    <span v-if="atobj.taskingLimit==4">每周一次</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">单价:</div>
+                                <div class="itemval">{{atobj.singlePrice}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">数量:</div>
+                                <div class="itemval">{{atobj.totalCount}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">被抢数量:</div>
+                                <div class="itemval">{{atobj.recCount}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">总价:</div>
+                                <div class="itemval">{{atobj.totalPrice}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">创建时间:</div>
+                                <div class="itemval" v-if="atobj.createDate">{{gettime(atobj.createDate)}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">上架时间:</div>
+                                <div class="itemval">{{gettime(atobj.upDate)}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">下架时间:</div>
+                                <div class="itemval">{{gettime(atobj.downDate)}}</div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">是否是修改:</div>
+                                <div class="itemval">
+                                    <span v-if="atobj.isUpdate==0">否</span>
+                                    <span v-if="atobj.isUpdate==1">是</span>
+                                </div>
+                            </div>
+                            <div class="listitem">
+                                <div class="itemname">服务费:</div>
+                                <div class="itemval">{{atobj.serviceFee}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="typesbox" v-if="stepsarr.length>0">
+                            <div class="typesitem" v-for="item in stepsarr">
+                                <div class="typeschild">
+                                    <div class="itemtitle">步骤类型:</div>
+                                    <div class="itemval2">
+                                        <span v-if="item.type==1">下载</span>
+                                        <span v-if="item.type==2">输入网址</span>
+                                        <span v-if="item.type==3">二维码</span>
+                                        <span v-if="item.type==4">复制数据</span>
+                                        <span v-if="item.type==5">图文说明</span>
+                                        <span v-if="item.type==6">验证图</span>
+                                        <span v-if="item.type==7">收集信息</span>
+                                    </div>
+                                </div>
+                                <div class="typeschild">
+                                    <div class="itemtitle">步骤说明:</div>
+                                    <div class="itemval2">{{item.explain}}</div>
+                                </div>
+                                <div class="typeschild" v-if="item.type==1||item.type==2||item.type==4||item.type==7">
+                                    <div class="itemtitle">
+                                        <span v-if="item.type==1">下载地址:</span>
+                                        <span v-if="item.type==2">网址:</span>
+                                        <span v-if="item.type==4">复制数据:</span>
+                                        <span v-if="item.type==7">收集信息:</span>
+                                    </div>
+                                    <div class="itemval2">
+                                        <span v-if="item.type==1||item.type==2">{{item.url}}</span>
+                                        <span v-if="item.type==4">{{item.val}}</span>
+                                        <span v-if="item.type==7">{{item.collectInfo}}</span>
+                                    </div>
+                                </div>
+                                <div class="typeschild" style="height: 60px" v-if="item.type==3||item.type==5||item.type==6">
+                                    <div class="itemtitle">步骤图:</div>
+                                    <div class="itemval2">
+                                        <img class="buzhouimg" :src="item.imgUrlFinal">
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--暂无数据-->
+                        <div v-if="stepsarr.length==0" class="lodmore" style="width: 100%;height:auto">
+                            <div class="noimg"><img src="../../san/style/images/nodata.png" alt=""></div>
+                            <div>暂无相关信息</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../san/layui/layui.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var urlval = geturl()
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+            ,laydate = layui.laydate
+            ,form = layui.form;
+    });
+
+
+</script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            taskId:'',
+            atobj:'',
+            stepsarr:[],
+            tasktype:1,
+        },
+        methods:{
+            gettime(timestamp) {
+                if(timestamp!=null&&timestamp!=undefined){
+                    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                    var Y = date.getFullYear() + '-';
+                    var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                    var D = date.getDate() + ' ';
+                    var h = date.getHours()
+                    if(h<10){
+                        h = '0'+h
+                    }
+                    h = h + ':';
+                    var m = date.getMinutes()
+                    if(m<10){
+                        m = '0'+m
+                    }
+                    m = m + ':';
+                    var s = date.getSeconds();
+                    if(s<10){
+                        s = '0'+s
+                    }
+                    return Y+M+D+h+m+s;
+                }
+            },
+            goback(){
+                if(this.tasktype ==1){
+                    window.location.href = 'tasklist.html'
+                }else if(this.tasktype ==2){
+                    window.location.href = '../rool/rooltop.html'
+                }
+            },
+            getdetail(){
+                let _this = this
+                var obj = {
+                    taskId:this.taskId
+                }
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/task/taskDetailManager',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'Content-Type':'application/json;charset=utf8','token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        _this.atobj = res.data.task
+                        _this.stepsarr = res.data.steps
+                    }
+                })
+            },
+        },
+        created(){
+            this.taskId=  window.location.href.split('id=')[1]
+            this.tasktype=  window.location.href.split('type=')[1].split('&id=')[0]
+            console.log(this.tasktype,'this.tasktype')
+            this.getdetail()
+        }
+    })
+</script>
+</body>
+</html>

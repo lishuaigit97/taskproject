@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>系统首页</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!--  <link rel="stylesheet" href="../static/san/iconfont/iconfont.css">-->
+  <link rel="stylesheet" href="../san/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../san/style/admin.css" media="all">
+  <script src="../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../san/font_1376113_m0c1ka3czu/iconfont.css">
+  <!-- 引入组件库 -->
+  <style>
+    .layui-nav-tree .layui-nav-bar{
+      width: 0px !important;
+    }
+    .userimg{
+      width:32px;
+      height:32px;
+      border-radius:16px;
+      float: left;
+      margin-top: 9px;
+    }
+    .userimg>img{
+      width: 100%;
+      height: 100%;
+      border-radius:16px;
+    }
+  </style>
+</head>
+<body class="layui-layout-body">
+<div id="LAY_app" >
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <!-- 头部区域 -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layadmin-flexible" lay-unselect>
+          <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+            <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+          </a>
+        </li>
+        <li class="layui-nav-item" lay-unselect style="display: none">
+          <a href="javascript:;" layadmin-event="refresh" title="刷新">
+            <i class="layui-icon layui-icon-refresh-3"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="layui-nav layui-layout-right"  lay-filter="layadmin-layout-right">
+        <div class="userimg">
+          <img id="adminpic" src="" alt="">
+        </div>
+        <li class="layui-nav-item" lay-unselect>
+          <a href="javascript:;">
+            <cite><span id="adminname"></span></cite>
+          </a>
+          <dl class="layui-nav-child">
+            <dd style="text-align: center;cursor: pointer" onclick="outlogin()"><a>退出</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-hide-xs" lay-unselect>
+          <a href="javascript:;" layadmin-event="fullscreen">
+            <i class="layui-icon layui-icon-screen-full"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- 侧边菜单 -->
+    <div class="layui-side layui-side-menu">
+      <div class="layui-side-scroll">
+        <div class="layui-logo" lay-href="home/home.html">
+          <span>XX管理平台</span>
+        </div>
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+          <li data-name="home"class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;" lay-tips="系统首页" lay-direction="2">
+              <span class="iconfont icon-icon-test" style="display: inline-block;margin-top: -8px"></span>
+              <cite>系统首页</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="console" class="layui-this">
+                <a lay-href="home/home.html">首页</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="userpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="用户管理" lay-direction="2">
+              <span class="iconfont icon-yonghu" style="display: inline-block;margin-top: -8px"></span>
+              <cite>用户管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="user/userlist.html">用户列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="任务管理" lay-direction="2">
+              <span class="iconfont icon-renwu" style="display: inline-block;margin-top: -8px"></span>
+              <cite>任务管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="task/tasklist.html">任务列表</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="task/tasktypelist.html">任务类型列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="homelistpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="菜单管理" lay-direction="2">
+              <span class="iconfont icon-caidan" style="display: inline-block;margin-top: -8px"></span>
+              <cite>菜单管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="homelist/homelist.html">首页菜单</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="homelist/foundlist.html">发现菜单</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="homelist/bannerlist.html">banner管理</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="homelist/scorll.html">滚动管理</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="大厅管理" lay-direction="2">
+              <span class="iconfont icon-banshidating" style="display: inline-block;margin-top: -8px"></span>
+              <cite>大厅管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="rool/rooltop.html">大厅顶部推荐管理</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="接单管理" lay-direction="2">
+              <span class="iconfont icon-zaixianjiedan2mian" style="display: inline-block;margin-top: -8px"></span>
+              <cite>接单管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="order/orderlist.html">接单列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="启动页" lay-direction="2">
+              <span class="iconfont icon-yunyingguanli_qidongyeguanggaoguanli" style="display: inline-block;margin-top: -8px"></span>
+              <cite>启动页</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="start/startlist.html">启动页列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="提现管理" lay-direction="2">
+              <span class="iconfont icon-tixian1" style="display: inline-block;margin-top: -8px"></span>
+              <cite>提现管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="thread/thread.html">提现管理列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="充值管理" lay-direction="2">
+              <span class="iconfont icon-chongzhi2" style="display: inline-block;margin-top: -8px"></span>
+              <cite>充值管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="topup/topup.html">充值管理列表</a>
+              </dd>
+            </dl>
+          </li>
+          <li data-name="taskpage" class="layui-nav-item">
+            <a href="javascript:;" lay-tips="配置管理" lay-direction="2">
+              <span class="iconfont icon-peizhi" style="display: inline-block;margin-top: -8px"></span>
+              <cite>配置管理</cite>
+            </a>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="config/shoutu.html">收徒配置</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="config/newuser.html">新手任务配置</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="config/signupdate.html">签到配置</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="config/set.html">系统配置</a>
+              </dd>
+            </dl>
+            <dl class="layui-nav-child">
+              <dd data-name="button">
+                <a lay-href="config/member.html">会员配置</a>
+              </dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 主体内容 -->
+    <div class="layui-body" id="LAY_app_body">
+      <div class="layadmin-tabsbody-item layui-show">
+        <iframe src="home/home.html" frameborder="0" class="layadmin-iframe"></iframe>
+      </div>
+    </div>
+    <!-- 辅助元素，一般用于移动设备下遮罩 -->
+    <div class="layadmin-body-shade" layadmin-event="shade"></div>
+  </div>
+</div>
+</body>
+<script src="../san/layui/layui.js"></script>
+<script src="../san/style/js/url.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+  layui.config({
+    base: '../san/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use('index');
+</script>
+<script>
+</script>
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script>
+  var userimg = localStorage.getItem("userimg")//这是获取本地缓存的方法
+  var token = localStorage.getItem("token")
+  document.getElementById('adminpic').src=userimg
+  if(!token){
+    layer.msg('登录已失效')
+    setTimeout(function () {
+      window.location.href = 'login/login.html'
+    },1000)
+  }
+  function outlogin() {
+    layer.confirm('确定退出登录？', function(index) {
+      layer.close(index)
+      window.location.href = 'login/login.html'
+    })
+  }
+</script>
+</html>
+
+

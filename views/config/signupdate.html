@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>签到配置</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .productsbox{
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+            width: 48%;
+            height: 50px;
+            line-height:50px;
+        }
+        .itemname{
+            width: 40%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+            padding: 0 15px;
+            box-sizing: border-box;
+            /*color: white;*/
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            margin-top: 5px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <div class="layui-row">
+                <div class="layui-col-md2">
+                    <div>签到配置</div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body" style="padding: 30px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <div class="layui-tab-content">
+                    <div class="productsbox">
+                        <div class="listitem">
+                            <div class="itemname">第一天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount1" placeholder="请输入第一天签到奖"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第二天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount2" placeholder="请输入第二天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第三天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount3" placeholder="请输入第三天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第四天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount4" placeholder="请输入第四天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第五天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount5" placeholder="请输入第五天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第六天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount6" placeholder="请输入第六天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">第七天签到奖励:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccount7" placeholder="请输入第七天签到奖励"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">超过7天签到金额:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.signedAccountMoreDays" placeholder="请输入超过7天签到金额"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">元</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname">签到任务金额限制额外百分比数:</div>
+                            <div class="itemval">
+                                <el-input v-model="atobj.moreMemberServiceFee" placeholder="请输入签到任务金额限制额外百分比数"></el-input>
+                            </div>
+                            <div style="margin-left: 5px">%</div>
+                        </div>
+                        <div class="listitem">
+                            <div class="itemname"></div>
+                            <div class="itemval">
+                                <a class="layui-btn layui-btn-normal" style="width: 110px" @click="savefn">保存</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../san/layui/layui.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var urlval = geturl()
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+            ,laydate = layui.laydate
+            ,form = layui.form;
+    });
+
+
+</script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            atobj:'',
+        },
+        methods:{
+            savefn(){
+                let _this = this
+                if(this.atobj.signedAccount1==''){
+                    return false
+                    layer.msg('请输入第一天签到奖励')
+                }
+                if(this.atobj.signedAccount2==''){
+                    return false
+                    layer.msg('请输入第二天签到奖励')
+                }
+                if(this.atobj.signedAccount3==''){
+                    return false
+                    layer.msg('请输入第三天签到奖励')
+                }
+                if(this.atobj.signedAccount4==''){
+                    return false
+                    layer.msg('请输入第四天签到奖励')
+                }
+                if(this.atobj.signedAccount5==''){
+                    return false
+                    layer.msg('请输入第五天签到奖励')
+                }
+                if(this.atobj.signedAccount6==''){
+                    return false
+                    layer.msg('请输入第六天签到奖励')
+                }
+                if(this.atobj.signedAccount7==''){
+                    return false
+                    layer.msg('请输入第七天签到奖励')
+                }
+                if(this.atobj.signedAccountMoreDays==''){
+                    return false
+                    layer.msg('请输入超过7天签到金额')
+                }
+                if(this.atobj.moreMemberServiceFee==''){
+                    return false
+                    layer.msg('请输入签到任务金额限制额外百分比数')
+                }
+                var obj = {
+                    moreMemberServiceFee:this.atobj.moreMemberServiceFee,
+                    signedAccountMoreDays:this.atobj.signedAccountMoreDays,
+                    signedAccount1:this.atobj.signedAccount1,
+                    signedAccount2:this.atobj.signedAccount2,
+                    signedAccount3:this.atobj.signedAccount3,
+                    signedAccount4:this.atobj.signedAccount4,
+                    signedAccount5:this.atobj.signedAccount5,
+                    signedAccount6:this.atobj.signedAccount6,
+                    signedAccount7:this.atobj.signedAccount7,
+                }
+                console.log(obj,'obj')
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/common/updateUserSignedConfig',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        layer.msg(res.msg)
+                        if(res.code==1){
+                            _this.getdetail()
+                        }
+                    }
+                })
+            },
+            getdetail(){
+                let _this = this
+                var obj = {
+                }
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                $.ajax({
+                    url:urlval+'/common/getUserSignedConfig',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'Content-Type':'application/json;charset=utf8','token':localStorage.getItem("token")},
+                    success:function (res) {
+                        console.log(res,'res')
+                        _this.atobj = res.data.conf
+                    }
+                })
+            },
+        },
+        created(){
+            this.getdetail()
+        }
+    })
+</script>
+</body>
+</html>

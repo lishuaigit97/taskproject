@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>大厅顶部推荐管理列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .checkallbox input{
+            font-size: 15px;
+            position: relative;
+            top: 8px;
+        }
+        .selectbox{
+            height: 38px;
+            width: 180px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid #e6e6e6;
+        }
+        .selectbox>select{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        .imgtr{
+            height: 40px;
+            position: relative;
+            font-size: 0px;
+        }
+        .goodimg{
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            font-size: 0;
+        }
+        .goodimg>img{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        .trval{
+            height: 40px;
+            left: 65px;
+            position: absolute;
+            top: 9px;
+            font-size: 14px;
+        }
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .findlist{
+            padding: 15px 0;
+        }
+        .serchnav{
+            display: flex;
+        }
+        .selectu{
+            text-indent: 5px;
+            color: #ccc;
+            font-size: 15px;
+        }
+        .selectu2{
+            color: black;
+            text-indent: 5px;
+            font-size: 15px;
+        }
+        .selectu2>option{
+            color: black;
+        }
+        .selectu>option{
+            color: black;
+        }
+        .btntr>a{
+            border: none;
+        }
+        .el-cascader{
+        }
+
+
+        .productsbox{
+            width: 70%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .listitem>:nth-child(1){
+            width: 30%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+
+        .banitem{
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .banitem2{
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .atitemname{
+            width: 40%;
+            text-align: right;
+
+        }
+        .atitemval{
+            width: 48%;
+            position: relative;
+        }
+        .upimg{
+            width: 60%;
+        }
+        .upimage{
+            width: 120px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            opacity: 0;
+        }
+        .el-radio{
+            line-height: 40px;
+        }
+        .el-textarea{
+            width: 60%;
+        }
+        th{
+            font-weight: bold!important;
+        }
+        .layui-layout-body{
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">大厅顶部推荐管理列表（共{{allpagenum}}条记录）</div>
+        <div class="layui-card-body">
+            <div class="layui-row findlist">
+                <div class="layui-col-md9 layui-col-md-offset3">
+                    <div class="">
+                        <div class="layui-form-item layui-form-itemtop">
+                            <div class="serchnav" style="float: right;margin-right: 0px !important;">
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionsstatus"
+                                            v-model="statusselect"
+                                            placeholder="选择状态"
+                                            @change="handleChangestatus">
+                                    </el-cascader>
+                                </div>
+                                <div>
+                                    <el-button type="primary" @click="findClient">查找</el-button>
+                                    <!--<button type="submit" class="layui-btn layui-btn-normal" @click="findClient">查找</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" lay-skin="line" >
+                <colgroup>
+                    <col width="100">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="200">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>任务id</th>
+                    <th>审核状态</th>
+                    <th>任务状态</th>
+                    <th>推荐星级</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody v-if="tabledata.length>0">
+                <tr v-for="item in tabledata">
+                    <td>{{item.id}}</td>
+                    <td>
+                        <span v-if="item.examineStatus==-1" style="color: red">审核失败</span>
+                        <span v-if="item.examineStatus==0" style="color:#FFB800 ">审核中</span>
+                        <span v-if="item.examineStatus==1">审核成功</span>
+                        <span v-if="item.examineStatus==2" style="color: red">已撤回</span>
+                    </td>
+                    <td>
+                        <span v-if="item.taskStatus==1">无</span>
+                        <span v-if="item.taskStatus==2">上架</span>
+                        <span v-if="item.taskStatus==3" style="color: red">下架</span>
+                        <span v-if="item.taskStatus==4" style="color: #FFB800">暂停</span>
+                        <span v-if="item.taskStatus==5" style="color: red">强制下架</span>
+                    </td>
+                    <td>{{item.star}}</td>
+                    <td>
+                        <span v-if="item.status==0" style="color: red">禁用</span>
+                        <span v-if="item.status==1">启用</span>
+                    </td>
+                    <td class="btntr">
+                        <a class="layui-btn layui-btn-sm layui-btn-warm" v-if="item.status==0" @click="startfn(item)">启用</a>
+                        <a class="layui-btn layui-btn-sm layui-btn-danger" v-if="item.status==1" @click="stopfn(item)">禁用</a>
+                        <a class="layui-btn layui-btn-sm layui-btn-normal" @click="lookfn(item)" style="width: 70px">查看任务</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--暂无数据-->
+            <div v-if="tabledata.length==0" class="lodmore" style="width: 100%;height:auto">
+                <div class="noimg"><img src="../../san/style/images/nodata.png" alt=""></div>
+                <div>暂无相关信息</div>
+            </div>
+            <div style="text-align: center" id="showpage">分页</div>
+        </div>
+    </div>
+</div>
+
+<script src="../../san/layui/layui.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form']);
+</script>
+<script>
+    var urlval = geturl()
+    var app = new Vue({
+        el:'#app',
+        data:{
+            tabledata:[],
+            pagenum:1, /*页数*/
+            pagesize:20,/*一页的条数*/
+            allpagenum:'',
+
+            //搜索数据
+            selectplc:'请输入搜索类型值',
+            typeselect:'',
+            optionstype: [
+                {value: '', label: '选择类型',},
+                {value: '1', label: 'app内部页跳转',},
+                {value: '2', label: '跳转网页',}
+            ],
+            statusselect:'',
+            optionsstatus: [
+                {value: '', label: '选择状态',},
+                {value: '0', label: '禁用',},
+                {value: '1', label: '启用',}
+            ],
+
+            nowpage:1,
+            status:'',
+            jumpType:'',
+            firstclick:true,
+            clickserch:false,
+        },
+        methods:{
+            /*分页*/
+            clickpage(){
+                let _this = this
+                layui.use('laypage', function(){
+                    var laypage = layui.laypage;
+                    laypage.render({
+                        elem: 'showpage'
+                        ,theme: '#1E9FFF'
+                        ,limit: _this.pagesize
+                        ,count: _this.pagenum //数据总数，从服务端得到
+                        ,layout: [ 'prev', 'page', 'next', 'skip','count',]
+                        ,jump: function(obj, first){
+                            //obj包含了当前分页的所有参数，比如：
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            console.log(obj.limit); //得到每页显示的条数
+                            _this.nowpage = obj.curr
+                            if(!_this.firstclick){
+                                if(_this.clickserch){
+                                    _this.clickserch = false
+                                }else {
+                                    _this.getdata(false,false)
+                                }
+                            }else {
+                                _this.firstclick = false
+                            }
+                            //首次不执行
+                            if(!first){
+                                //do something
+                            }
+                        }
+                    });
+                });
+            },
+            lookfn(item){
+                window.location.href = '../task/task_show.html?type=2&id='+item.taskId
+            },//修改
+            handleChange(e){
+                let _this = this
+                var f= e.target.files
+                if(f.length==0){
+                    return false
+                }
+                var formData = new FormData();                       // 可以增加表单数据
+                formData.append("file", f[0]);
+                var index = layer.load(2);
+                $.ajax({
+                    url: urlval+"/file/multiUpload",
+                    data:formData,
+                    dataType:"text",
+                    type:"post",
+                    //这两个属性必须设置！！！！
+                    contentType: false,
+                    processData: false,
+                    headers:{'token':localStorage.getItem("token")},
+                    success: function (data) {
+                        layer.close(index);
+                        var data = JSON.parse(data)
+                        console.log(data)
+                        if(data.code==1){
+                            _this.atobj.iconUrl = data.data.fileUrls[0]
+                            _this.atobj.icon = data.data.keys[0]
+                        }
+
+                    },
+                    error: function (data) {
+                    }
+                });
+            },//上传图片
+            handleChangestatus(){
+                if(this.statusselect.length>0){
+                    this.status = this.statusselect[0]
+                }
+            },
+            findClient(){
+                this.clickserch = true
+                this.getdata(true)
+            },
+            startfn(item){
+                let _this = this
+                console.log(item)
+                this.$confirm('此操作将启动此任务状态, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    var obj = {
+                        id:item.id,
+                        status:1,
+                    }
+                    obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                    var data = {
+                        param:obj,
+                    }
+                    $.ajax({
+                        url:urlval+'/task/updateHeadTaskStatus',//url地址：ip地址+端口号+接口路径
+                        data:data,
+                        type: "POST",
+                        headers:{'token':localStorage.getItem("token")},
+                        success:function (res) {
+                            console.log(res,'res')
+                            _this.$message({
+                                type: 'success',
+                                message: res.msg+'!'
+                            });
+                            _this.getdata(false)
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            stopfn(item){
+                let _this = this
+                console.log(item)
+                this.$confirm('此操作将禁用此任务状态, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    var obj = {
+                        id:item.id,
+                        status:0,
+                    }
+                    obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                    var data = {
+                        param:obj,
+                    }
+                    $.ajax({
+                        url:urlval+'/task/updateHeadTaskStatus',//url地址：ip地址+端口号+接口路径
+                        data:data,
+                        type: "POST",
+                        headers:{'token':localStorage.getItem("token")},
+                        success:function (res) {
+                            console.log(res,'res')
+                            _this.$message({
+                                type: 'success',
+                                message: res.msg+'!'
+                            });
+                            _this.getdata(false)
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            getdata(type){
+                let _this = this
+                var obj = {
+                    pageSize:this.pagesize,
+                    pageNum:this.nowpage,
+                    status:this.status,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/task/listHeadTasks',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        if(res.data.page.list){
+                            _this.tabledata = res.data.page.list
+                            _this.allpagenum= res.data.page.total
+                            _this.pagenum = res.data.page.total
+                            if(type){
+                                _this.clickpage()
+                            }
+                        }else {
+                            _this.tabledata = []
+                        }
+                    }
+                })
+            },
+        },
+        created(){
+            this.getdata(true)
+        }
+    })
+</script>
+</body>
+</html>
+
+

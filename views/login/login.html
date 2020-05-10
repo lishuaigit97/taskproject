@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .ccontainer{
+            background-color: #fff;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .login_bgbox{
+            position: relative;
+        }
+        .login_bgbox>img{
+            width: 100%;
+            height: 100%;
+        }
+        .logbox{
+            height: 90px;
+            box-sizing: border-box;
+            padding: 15px 0;
+            display: flex;
+        }
+        .logimg{
+            width: 60px;
+            height: 60px;
+            margin-left:20%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .logimg>img{
+            width: 100%;
+            height: 100%;
+        }
+        .logtitle{
+            height: 60px;
+            margin-left: 25px;
+            line-height: 60px;
+            font-size:25px;
+            color: black;
+            font-weight: bolder;
+        }
+        .login_form_box{
+            position: absolute;
+            width: 100%;
+            top:15%;
+            display:table-cell;
+            vertical-align:middle;
+            text-align: center;
+        }
+        .login_from{
+            position: absolute;
+            width:360px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 5px;
+            padding:20px 20px;
+            box-sizing: border-box;
+            right: 15%;
+            display:inline-block
+        }
+        .fromtitle{
+            text-align: left;
+            width: 100%;
+            padding: 15px 0 10px;
+            font-size: 20px;
+            color: black;
+            font-weight: bolder;
+        }
+        .login_user{
+            flex: 1;
+            display: flex;
+            height: 41px;
+            border: 1px solid #eee;
+            margin-top: 15px;
+            border-radius: 5px;
+            flex-direction: row;
+            overflow: hidden;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .inputbox{
+            width: 100%;
+            flex: 1;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            text-indent: 10px;
+        }
+        .delalert{
+            background-color:#fff;
+            width:300px;
+            font-size: 12px;
+            position: absolute;
+            border: 1px solid #e2e2e2;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(220,220,220);
+            visibility: hidden;
+        }
+        .deltitle{
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            justify-content: space-between;
+            box-sizing: border-box;
+            font-size: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: right;
+        }
+        .alettitle{
+            text-align: left;
+            width: 100px;
+            height: 20px;
+            font-size: 14px;
+        }
+        .alertcontrnt{
+            padding: 30px 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .delbtn{
+            display: flex;
+            justify-content: space-between;
+            height: 44px;
+            line-height: 44px;
+            border-top:1px solid rgb(229,229,229);
+            box-sizing: border-box;
+        }
+        .btnbox,.btnsure{
+            width: 50%;
+            cursor: pointer;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btnsure:hover{
+            color:rgb(51,133,255);
+        }
+        .btnbox:hover{
+            color:rgb(51,133,255);
+        }
+        .bianxian{
+            width: 1px;
+            background-color: #eee;
+        }
+        .login_btn{
+            padding: 12px 10px;
+            background-color:rgb(51,133,255);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .login_repwd{
+            cursor: pointer;
+        }
+        .login_repwd:hover{
+            color:rgb(51,133,255);
+        }
+        .quanxiantext{
+            color: rgb(150,150,150);
+            font-size: 16px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+        }
+        .iconfont{
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="ccontainer" id="app">
+    <div class=logbox>
+        <div class="logimg"><img src="../../san/style/images/logintop.png"></div>
+        <div class="logtitle">XX管理系统</div>
+    </div>
+    <div class="login_bgbox">
+        <img class="login_bg" src="../../san/style/images/login.png" alt="">
+        <div class="login_form_box">
+            <div class="login_from">
+                <div class="fromtitle">登录| XX后台</div>
+                <div class="login_user">
+                    <div class="layui-icon layui-icon-username iconfont"></div>
+                    <input class="inputbox" type="text" v-model="phone" placeholder="用户名">
+                </div>
+                <div class="login_user">
+                    <div class="layui-icon layui-icon-password iconfont"></div>
+                    <input class="inputbox" type="password" v-model="pwd" placeholder="密码">
+                </div>
+                <div class="login_btn" @click="login">登录</div>
+                <p class="login_repwd" @click="forget">忘记密码？</p>
+            </div>
+        </div>
+    </div>
+    <div class="quanxiantext">Copyright &copy 版权所有 XX</div>
+    <!--忘记密码-->
+    <div class="delalert">
+        <div class="deltitle">
+            <div class="alettitle">提示</div>
+            <div style="cursor: pointer" class="closebox">×</div>
+        </div>
+        <div class="alertcontrnt">
+            忘记密码请联系超级管理员
+        </div>
+        <div class="delbtn">
+            <div class="btnbox">取消</div>
+            <div class="bianxian"></div>
+            <div class="btnsure">确定</div>
+        </div>
+    </div>
+</div>
+
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../san/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index');
+</script>
+<script>
+    var urlval = geturl()
+    let app = new Vue({
+        el:'#app',
+        data:{
+            phone:'',
+            pwd:'',
+        },
+        methods:{
+            login(){
+                var rel = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
+                if(!rel.test(this.phone)){//手机号正则判断
+                    layer.msg('手机号有误')//这是用法  layer的msg方法
+                    return false
+                }
+                if(!this.pwd){
+                    layer.msg('请输入密码')
+                    return false
+                }
+                var obj = {
+                    phone:this.phone,
+                    pwd:this.pwd,
+                }
+                obj = JSON.stringify(obj)
+                var data = {
+                    param:obj
+                }
+                console.log(data)
+                $.ajax({
+                    url:urlval+'/user/managerLogin',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    success:function (res) {
+                        console.log(res,'res')
+                        if(res.data!=undefined&&res.code==1){
+                            layer.msg(res.msg)
+                            localStorage.setItem("token", res.data.token);//设置cookie
+                            localStorage.setItem("userimg", res.data.userInfo.headImgUrl);
+                            localStorage.setItem("userid", res.data.userInfo.id);
+                            localStorage.setItem("userpwd", res.data.userInfo.pwd);
+                            localStorage.setItem("registDate", res.data.userInfo.registDate);
+                            setTimeout(function () {
+                                window.location.href = '../index.html'
+                            },1000)
+                        }else {
+                            layer.msg(res.msg)
+                        }
+                    }
+                })
+            },
+            forget(){
+
+            },
+        },
+        created(){
+        }
+    })
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d51f2571-a720-41b6-ba9b-83305f26aa59" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1950">
+              <caret line="141" column="36" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
+              <folding>
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#dd#0;n#dl#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#li#2;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#5;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/homelist/foundlist.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="431" column="18" selection-start-line="431" selection-start-column="18" selection-end-line="431" selection-end-column="18" />
+              <folding>
+                <element signature="n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#15165#16353#0" />
+                <element signature="e#16378#16902#0" />
+                <element signature="e#16931#18141#0" />
+                <element signature="e#18171#20112#0" />
+                <element signature="e#20144#20278#0" />
+                <element signature="e#20311#20453#0" />
+                <element signature="e#20358#20439#0" />
+                <element signature="e#20535#20609#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/task/task_show.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="124" column="22" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#3;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#2;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#3;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#4;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/home/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="181" column="79" selection-start-line="181" selection-start-column="79" selection-end-line="181" selection-end-column="79" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>shenheselect</find>
+      <find>optionsshangjia</find>
+      <find>tuijianselect</find>
+      <find>handleChangetuijian</find>
+      <find>handleChangetotop</find>
+      <find>handleChangeshangjia</find>
+      <find>handleChangeshenhe</find>
+      <find>handleChange2</find>
+      <find>optionstotop</find>
+      <find>xiajiafn</find>
+      <find>optionstype2</find>
+      <find>atsurefn</find>
+      <find>shenhefn</find>
+      <find>atobj</find>
+      <find>failDesc</find>
+      <find>taskId</find>
+      <find>getFullYear</find>
+      <find>timestampToTime</find>
+      <find>gettime</find>
+      <find>indexJoinCount</find>
+      <find>getdata</find>
+      <find>tabledata</find>
+      <find>lookfn</find>
+      <find>imgtr</find>
+      <find>handleChangetype</find>
+      <find>handleChange</find>
+      <find>topTitle</find>
+      <find>main1</find>
+      <find>data</find>
+      <find>echarts</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>/san/</replace>
+      <replace>#3385ff</replace>
+      <replace>../../san/</replace>
+      <replace>../../</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/static/wxuser/css/myMoney.css" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/personal/index.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/order/index.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/order/order_detail.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/my/index.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/static/wxuser/js/url.js" />
+        <option value="&lt;81298dbb-e1d3-4478-9b50-174d0f52ad4b&gt;/application/san/view/equipemt/index.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/userreback.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/bpass.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/breback.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/bwaitsh.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/userwaitsh.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/san/views/finance/userpass.html" />
+        <option value="$PROJECT_DIR$/views/work/progress_show.html" />
+        <option value="$PROJECT_DIR$/views/help/waiting.html" />
+        <option value="$PROJECT_DIR$/views/help/reback.html" />
+        <option value="$PROJECT_DIR$/views/help/pass.html" />
+        <option value="$PROJECT_DIR$/views/help/Accounting.html" />
+        <option value="$PROJECT_DIR$/views/help/expenses.html" />
+        <option value="$PROJECT_DIR$/views/Customer/helpping.html" />
+        <option value="$PROJECT_DIR$/views/Customer/waitsh.html" />
+        <option value="$PROJECT_DIR$/views/Customer/timeout.html" />
+        <option value="$PROJECT_DIR$/views/Customer/reback.html" />
+        <option value="$PROJECT_DIR$/views/Customer/Level_setting.html" />
+        <option value="$PROJECT_DIR$/views/traffic/index.html" />
+        <option value="$PROJECT_DIR$/views/data_statistics/clientcount.html" />
+        <option value="$PROJECT_DIR$/views/datashow/btrendecharts.html" />
+        <option value="$PROJECT_DIR$/views/data_statistics/financecount.html" />
+        <option value="$PROJECT_DIR$/views/data_statistics/moneycount.html" />
+        <option value="$PROJECT_DIR$/views/data_statistics/helpcount.html" />
+        <option value="$PROJECT_DIR$/views/data_statistics/managercount.html" />
+        <option value="&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/sanb/views/order/waitsend_show.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/myCard/waiting.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/goods_detai/detail.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/pingtuan/daipingtuan.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/sale/sale_detail.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/sale/wholesale.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/goods_bus/goods_bus.html" />
+        <option value="&lt;81c7ad34-d531-40ce-9913-948548ba428f&gt;/qlzj/view/goods_detai/submitgoods.html" />
+        <option value="$PROJECT_DIR$/san/style/js/url.js" />
+        <option value="$PROJECT_DIR$/views/login/login.html" />
+        <option value="$PROJECT_DIR$/views/user/userlist_show.html" />
+        <option value="$PROJECT_DIR$/views/user/userlist.html" />
+        <option value="$PROJECT_DIR$/views/task/tasklist.html" />
+        <option value="$PROJECT_DIR$/views/homelist/foundlist.html" />
+        <option value="$PROJECT_DIR$/views/homelist/homelist.html" />
+        <option value="$PROJECT_DIR$/views/task/tasktypelist.html" />
+        <option value="$PROJECT_DIR$/views/homelist/bannerlist.html" />
+        <option value="$PROJECT_DIR$/views/task/task_show.html" />
+        <option value="$PROJECT_DIR$/views/index.html" />
+        <option value="$PROJECT_DIR$/views/home/home.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="255" />
+    <option name="y" value="144" />
+    <option name="width" value="1503" />
+    <option name="height" value="878" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="san" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="san" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="san" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="san" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yEsan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yEsan" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../newyEsan" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\yEsan\san\style\js" />
+      <recent name="D:\yEsan\views\homelist" />
+      <recent name="D:\yEsan\views\task" />
+      <recent name="D:\yEsan\views\user" />
+      <recent name="D:\工作项目\渝E基金互助\yEsan\san\layui\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d51f2571-a720-41b6-ba9b-83305f26aa59" name="Default Changelist" comment="" />
+      <created>1555752190499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555752190499</updated>
+      <workItem from="1555752194279" duration="15953000" />
+      <workItem from="1555933149605" duration="5622000" />
+      <workItem from="1555988661557" duration="22358000" />
+      <workItem from="1556025788165" duration="3633000" />
+      <workItem from="1556069064868" duration="10346000" />
+      <workItem from="1556154829834" duration="12965000" />
+      <workItem from="1556176069099" duration="10874000" />
+      <workItem from="1556240776441" duration="27340000" />
+      <workItem from="1556328313408" duration="26279000" />
+      <workItem from="1556414336142" duration="4143000" />
+      <workItem from="1556420154659" duration="4104000" />
+      <workItem from="1556501047062" duration="17937000" />
+      <workItem from="1556586793225" duration="13834000" />
+      <workItem from="1557018959150" duration="12579000" />
+      <workItem from="1557106086321" duration="18448000" />
+      <workItem from="1557192290164" duration="12254000" />
+      <workItem from="1557210180899" duration="13756000" />
+      <workItem from="1557277999878" duration="41316000" />
+      <workItem from="1557320117683" duration="1077000" />
+      <workItem from="1557365387931" duration="29514000" />
+      <workItem from="1557451060704" duration="28450000" />
+      <workItem from="1557710485397" duration="34636000" />
+      <workItem from="1557796143647" duration="31639000" />
+      <workItem from="1557883633848" duration="34249000" />
+      <workItem from="1557970038112" duration="41809000" />
+      <workItem from="1558069617118" duration="19530000" />
+      <workItem from="1558142304066" duration="25809000" />
+      <workItem from="1558315063484" duration="11354000" />
+      <workItem from="1558329680339" duration="6589000" />
+      <workItem from="1558403166962" duration="3259000" />
+      <workItem from="1558489631827" duration="3735000" />
+      <workItem from="1558574083583" duration="16503000" />
+      <workItem from="1558661020340" duration="9161000" />
+      <workItem from="1558926429284" duration="3567000" />
+      <workItem from="1559008452991" duration="3140000" />
+      <workItem from="1559091251822" duration="3574000" />
+      <workItem from="1559178707320" duration="15648000" />
+      <workItem from="1559350607363" duration="24798000" />
+      <workItem from="1559523524781" duration="24253000" />
+      <workItem from="1559612081462" duration="8520000" />
+      <workItem from="1559697619031" duration="26309000" />
+      <workItem from="1559784022231" duration="23912000" />
+      <workItem from="1560128184813" duration="33516000" />
+      <workItem from="1560216336211" duration="27607000" />
+      <workItem from="1560302225778" duration="32289000" />
+      <workItem from="1560388791832" duration="29412000" />
+      <workItem from="1560734023038" duration="31187000" />
+      <workItem from="1560821668049" duration="30821000" />
+      <workItem from="1560907922679" duration="32328000" />
+      <workItem from="1560993840813" duration="22784000" />
+      <workItem from="1561080017139" duration="9084000" />
+      <workItem from="1561100594654" duration="1221000" />
+      <workItem from="1561102824807" duration="9589000" />
+      <workItem from="1561338494280" duration="664000" />
+      <workItem from="1561339426833" duration="30418000" />
+      <workItem from="1566265916502" duration="216000" />
+      <workItem from="1566266150349" duration="16849000" />
+      <workItem from="1566288798434" duration="3414000" />
+      <workItem from="1566349602100" duration="21734000" />
+      <workItem from="1566436447258" duration="24572000" />
+      <workItem from="1566524796854" duration="21009000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1083490000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14014752" />
+      <window_info id="Structure" order="1" weight="0.24973656" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Remote Host" order="3" weight="0.14963119" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.21696036" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.032502707" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="File Transfer" order="11" visible="true" weight="0.038314175" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.12861073" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" id="Remote Host" order="3" visible="true" weight="0.21715076" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.21843435" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="File Transfer" order="11" visible="true" weight="0.038314175" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>remoteDeploymentFS://&lt;2c08e1b9-8464-4226-a61a-0c1932fd57ab&gt;/root/jpgs/sanb/views/finance/waitsh.html</url>
+          <line>454</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>remoteDeploymentFS://&lt;33cfaafb-90da-4a0a-9392-add776c86b05&gt;/root/jpgs/sanb/views/order/waitsend_show.html</url>
+          <line>799</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/test11.html" />
+    <entry file="file://$PROJECT_DIR$/san/ueditor/third-party/jquery-1.10.2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hh.html" />
+    <entry file="file://$PROJECT_DIR$/views/test.html" />
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="17579" column="12" selection-start-line="17579" selection-start-column="12" selection-end-line="17579" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Tencent Files/850616152/FileRecv/city.json" />
+    <entry file="file://$PROJECT_DIR$/views/work/finish.html" />
+    <entry file="file://$PROJECT_DIR$/views/business/asking_show.html" />
+    <entry file="file://$PROJECT_DIR$/views/work/progress_show.html" />
+    <entry file="file://$PROJECT_DIR$/views/help/reback.html" />
+    <entry file="file://$PROJECT_DIR$/views/business/types.html" />
+    <entry file="file://$PROJECT_DIR$/views/help/Accounting.html" />
+    <entry file="file://$PROJECT_DIR$/views/help/expenses.html" />
+    <entry file="file://$PROJECT_DIR$/views/help/waiting.html" />
+    <entry file="file://$PROJECT_DIR$/views/help/pass.html" />
+    <entry file="file://$PROJECT_DIR$/views/Customer/waitsh.html" />
+    <entry file="file://$PROJECT_DIR$/views/Customer/Level_setting.html" />
+    <entry file="file://$PROJECT_DIR$/views/datashow/btrendecharts.html" />
+    <entry file="file://$PROJECT_DIR$/views/system/advert_add.html" />
+    <entry file="file://$PROJECT_DIR$/views/work/waitsh_show.html" />
+    <entry file="file://$PROJECT_DIR$/views/Customer/reback.html" />
+    <entry file="file://$PROJECT_DIR$/views/data_statistics/financecount.html" />
+    <entry file="file://$PROJECT_DIR$/views/finance/userwaitsh.html" />
+    <entry file="file://$PROJECT_DIR$/views/Customer/helpping.html" />
+    <entry file="file://$PROJECT_DIR$/views/data_statistics/moneycount.html" />
+    <entry file="file://$PROJECT_DIR$/views/datashow/bcount.html" />
+    <entry file="file://$PROJECT_DIR$/views/data_statistics/helpcount.html" />
+    <entry file="file://$PROJECT_DIR$/views/data_statistics/clientcount.html" />
+    <entry file="file://$PROJECT_DIR$/views/Customer/timeout.html" />
+    <entry file="file://$PROJECT_DIR$/views/data_statistics/managercount.html" />
+    <entry file="file://$PROJECT_DIR$/views/traffic/index.html" />
+    <entry file="file://$PROJECT_DIR$/san/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/res/layui-logo.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/res/logo-black.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/res/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="170" column="53" selection-start-line="170" selection-start-column="43" selection-end-line="170" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="237" column="8" lean-forward="true" selection-start-line="237" selection-start-column="8" selection-end-line="237" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/js/url.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/yEsan/views/member/userlist_show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="120" column="21" lean-forward="true" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/homelist/homelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="662" column="24" lean-forward="true" selection-start-line="662" selection-start-column="24" selection-end-line="662" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#8;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/task/tasktypelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="590" column="4" lean-forward="true" selection-start-line="590" selection-start-column="4" selection-end-line="590" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-button#0;n#div#1;n#div#6;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/user/userlist_show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="103" column="44" lean-forward="true" selection-start-line="103" selection-start-column="44" selection-end-line="103" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/task/tasklist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1441">
+          <caret line="342" column="24" lean-forward="true" selection-start-line="342" selection-start-column="24" selection-end-line="342" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#4;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#td#12;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14365#14593#0" />
+            <element signature="e#14615#14808#0" />
+            <element signature="e#14865#15058#0" />
+            <element signature="e#15115#15308#0" />
+            <element signature="e#15355#15502#0" />
+            <element signature="e#11753#11982#0" />
+            <element signature="e#11026#11268#0" />
+            <element signature="e#16919#18107#0" />
+            <element signature="e#13659#14049#0" />
+            <element signature="e#17948#17980#0" />
+            <element signature="e#18128#18273#0" />
+            <element signature="e#18128#18273#0" />
+            <element signature="e#18128#18273#0" />
+            <element signature="e#18308#18453#0" />
+            <element signature="e#12854#12886#0" />
+            <element signature="e#22705#22755#0" />
+            <element signature="e#19257#19289#0" />
+            <element signature="e#22896#24305#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/user/userlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="266" column="49" lean-forward="true" selection-start-line="266" selection-start-column="49" selection-end-line="266" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-input#0;n#div#4;n#el-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/homelist/bannerlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5957">
+          <caret line="639" column="18" lean-forward="true" selection-start-line="639" selection-start-column="18" selection-end-line="639" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#8;n#el-dialog#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14402#14674#0" />
+            <element signature="e#14730#14885#0" />
+            <element signature="e#14945#15092#0" />
+            <element signature="e#15165#16353#0" />
+            <element signature="e#16378#16902#0" />
+            <element signature="e#16931#18141#0" />
+            <element signature="e#18171#20112#0" />
+            <element signature="e#20144#20278#0" />
+            <element signature="e#20311#20453#0" />
+            <element signature="e#20487#20623#0" />
+            <element signature="e#20658#20802#0" />
+            <element signature="e#20828#20878#0" />
+            <element signature="e#20904#21448#0" />
+            <element signature="e#21477#22936#0" />
+            <element signature="e#22963#24230#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/homelist/foundlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="431" column="18" selection-start-line="431" selection-start-column="18" selection-end-line="431" selection-end-column="18" />
+          <folding>
+            <element signature="n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#15165#16353#0" />
+            <element signature="e#16378#16902#0" />
+            <element signature="e#16931#18141#0" />
+            <element signature="e#18171#20112#0" />
+            <element signature="e#20144#20278#0" />
+            <element signature="e#20311#20453#0" />
+            <element signature="e#20358#20439#0" />
+            <element signature="e#20535#20609#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/task/task_show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="124" column="22" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#4;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="141" column="36" selection-start-line="141" selection-start-column="36" selection-end-line="141" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#0;n#dl#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#li#2;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#5;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/san/style/js/echarts.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="181" column="79" selection-start-line="181" selection-start-column="79" selection-end-line="181" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

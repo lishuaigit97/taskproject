@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2c08e1b9-8464-4226-a61a-0c1932fd57ab" name="jinping" url="http://39.104.188.55">
+        <fileTransfer host="39.104.188.55" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="33cfaafb-90da-4a0a-9392-add776c86b05" name="jinpinsan" url="http://47.104.88.224">
+        <fileTransfer host="47.104.88.224" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="81c7ad34-d531-40ce-9913-948548ba428f" name="qlzj" url="http://47.99.70.147">
+        <fileTransfer host="47.99.70.147" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="81298dbb-e1d3-4478-9b50-174d0f52ad4b" name="sgrz" url="http://39.98.216.145">
+        <fileTransfer host="39.98.216.145" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

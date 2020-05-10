@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页菜单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+    <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .checkallbox input{
+            font-size: 15px;
+            position: relative;
+            top: 8px;
+        }
+        .selectbox{
+            height: 38px;
+            width: 180px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid #e6e6e6;
+        }
+        .selectbox>select{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+        .imgtr{
+            height: 40px;
+            position: relative;
+            font-size: 0px;
+        }
+        .goodimg{
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            font-size: 0;
+        }
+        .goodimg>img{
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+        }
+        .trval{
+            height: 40px;
+            left: 65px;
+            position: absolute;
+            top: 9px;
+            font-size: 14px;
+        }
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .findlist{
+            padding: 15px 0;
+        }
+        .serchnav{
+            display: flex;
+        }
+        .selectu{
+            text-indent: 5px;
+            color: #ccc;
+            font-size: 15px;
+        }
+        .selectu2{
+            color: black;
+            text-indent: 5px;
+            font-size: 15px;
+        }
+        .selectu2>option{
+            color: black;
+        }
+        .selectu>option{
+            color: black;
+        }
+        .btntr>a{
+            border: none;
+        }
+        .el-cascader{
+        }
+
+
+        .productsbox{
+            width: 70%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 300px;
+        }
+        .listitem{
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .listitem>:nth-child(1){
+            width: 30%;
+            text-align: right;
+            margin-right: 3%;
+            display: inline-block;
+        }
+        .listitem>:nth-child(2){
+            width: 50%;
+            display: flex;
+        }
+        .listitem span{
+            margin-right: 15px;
+        }
+        .grid-demo {
+            width: 70px;
+            height: 30px;
+            outline: 1px solid #cfcfcf;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 5px;
+            float: right;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .grid-demo:hover {
+            background-color: #2e8ded;
+            color: white;
+            outline: none;
+        }
+        .imgshow img{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            margin-right:10px;
+        }
+        .imgshowlist img{
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+            margin-right:10px;
+        }
+        .btn{
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 20px;
+            padding:  0 15px;
+        }
+
+        .banitem{
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .banitem2{
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .atitemname{
+            width: 40%;
+            text-align: right;
+
+        }
+        .atitemval{
+            width: 48%;
+            position: relative;
+        }
+        .upimg{
+            width: 60%;
+        }
+        .upimage{
+            width: 120px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            opacity: 0;
+        }
+        .el-radio{
+            line-height: 40px;
+        }
+        .el-textarea{
+            width: 60%;
+        }
+        th{
+            font-weight: bold!important;
+        }
+        .layui-layout-body{
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-fluid" id="app" v-cloak>
+    <div class="layui-card">
+        <div class="layui-card-header">首页菜单列表（共{{allpagenum}}条记录）</div>
+        <div class="layui-card-body">
+            <div class="layui-row findlist">
+                <div class="layui-col-md9 layui-col-md-offset3">
+                    <div class="">
+                        <div class="layui-form-item layui-form-itemtop">
+                            <div class="serchnav" style="float: right;margin-right: 0px !important;">
+                                <div>
+                                    <el-button type="primary" style="margin-right: 10px" @click="addlistfn">新增</el-button>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px" v-if="false">
+                                    <el-cascader
+                                            :options="optionstype"
+                                            v-model="typeselect"
+                                            placeholder="选择类型"
+                                            @change="handleChangetype">
+                                    </el-cascader>
+                                </div>
+                                <div class="block" style="width: 165px;height: 32px;margin-right: 5px">
+                                    <el-cascader
+                                            :options="optionsstatus"
+                                            v-model="statusselect"
+                                            placeholder="选择状态"
+                                            @change="handleChangestatus">
+                                    </el-cascader>
+                                </div>
+                                <div>
+                                    <el-button type="primary" @click="findClient">查找</el-button>
+                                    <!--<button type="submit" class="layui-btn layui-btn-normal" @click="findClient">查找</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="layui-table" lay-skin="line" >
+                <colgroup>
+                    <col width="80">
+                    <col width="100">
+                    <col width="80">
+                    <col width="100">
+                    <col width="140">
+                    <col width="100">
+                    <col width="140">
+                    <col width="80">
+                    <col width="80">
+                    <col width="100">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名字</th>
+                    <th>图片</th>
+                    <th>地址</th>
+                    <th>跳转类型</th>
+                    <th>参与人数</th>
+                    <th>描述</th>
+                    <th>排序</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody v-if="tabledata.length>0">
+                <tr v-for="item in tabledata">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="imgtr">
+                        <div class="goodimg">
+                            <img :src="item.iconUrl">
+                        </div>
+                    </td>
+                    <td>{{item.url}}</td>
+                    <td>
+                        <span v-if="item.jumpType==1">app内部页跳转</span>
+                        <span v-if="item.jumpType==2">跳转网页</span>
+                    </td>
+                    <td>{{item.indexJoinCount}}</td>
+                    <td>{{item.desc}}</td>
+                    <td>{{item.sort}}</td>
+                    <td>
+                        <span v-if="item.status==0" style="color: red">禁用</span>
+                        <span v-if="item.status==1">启用</span>
+                    </td>
+                    <td class="btntr">
+                        <a class="layui-btn layui-btn-sm layui-btn-warm" @click="editfn(item)">修改</a>
+                        <a class="layui-btn layui-btn-sm layui-btn-danger" @click="delfn(item)">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--暂无数据-->
+            <div v-if="tabledata.length==0" class="lodmore" style="width: 100%;height:auto">
+                <div class="noimg"><img src="../../san/style/images/nodata.png" alt=""></div>
+                <div>暂无相关信息</div>
+            </div>
+            <div style="text-align: center" id="showpage">分页</div>
+            <el-dialog :title="attitle" :visible.sync="dialogTableVisible">
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">名字：</div>
+                    <div class="atitemval">
+                        <el-input v-model="atobj.name" placeholder="请输入名字"></el-input>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">参与人数：</div>
+                    <div class="atitemval">
+                        <el-input v-model="atobj.indexJoinCount" placeholder="请输入参与人数"></el-input>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">地址：</div>
+                    <div class="atitemval">
+                        <el-input v-model="atobj.url" placeholder="请输入地址"></el-input>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">序号：</div>
+                    <div class="atitemval">
+                        <el-input v-model="atobj.sort" placeholder="请输入序号"></el-input>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">跳转类型：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="optionstype2"
+                                v-model="typeselect2"
+                                placeholder="选择跳转类型"
+                                @change="handleChangetype2">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">状态：</div>
+                    <div class="atitemval">
+                        <el-cascader
+                                :options="optionsstatus2"
+                                v-model="statusselect2"
+                                placeholder="选择状态"
+                                @change="handleChangestatus2">
+                        </el-cascader>
+                    </div>
+                </div>
+                <div class="banitem2">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px">描述:</div>
+                    <el-input
+                            type="textarea"
+                            :rows="3"
+                            placeholder="请输入内容"
+                            v-model="atobj.desc">
+                    </el-input>
+                </div>
+                <div class="banitem2">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px"></div>
+                    <div class="atitemval">
+                        <input class="upimage" type="file" @change="handleChange($event)" accept="image/jpg,image/jpeg,image/png,image/gif">
+                        <el-button type="primary" size="mini" style="width: 120px;height: 35px">选择图片</el-button>
+                    </div>
+                </div>
+                <div class="banitem2" v-if="atobj.iconUrl!=''">
+                    <div class="atitemname" style="width: 100px;text-align: right;margin-right: 10px"></div>
+                    <div class="atitemval">
+                        <img class="upimg" :src="atobj.iconUrl">
+                    </div>
+                </div>
+                <div class="banitem" style="margin-top: 20px">
+                    <div style="width: 100px;text-align: right;margin-right: 10px"></div>
+                    <el-button type="danger" size="mini" style="width: 120px;height: 35px" @click="atsurefn">确定</el-button>
+                </div>
+            </el-dialog>
+        </div>
+    </div>
+</div>
+
+<script src="../../san/layui/layui.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+    layui.config({
+        base: '../../san/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form']);
+</script>
+<script>
+    var urlval = geturl()
+    var app = new Vue({
+        el:'#app',
+        data:{
+            tabledata:[],
+            pagenum:1, /*页数*/
+            pagesize:20,/*一页的条数*/
+            allpagenum:'',
+
+            //搜索数据
+            selectplc:'请输入搜索类型值',
+            typeselect:'',
+            optionstype: [
+                {value: '', label: '选择类型',},
+                {value: '1', label: 'app内部页跳转',},
+                {value: '2', label: '跳转网页',}
+            ],
+            statusselect:'',
+            optionsstatus: [
+                {value: '', label: '选择状态',},
+                {value: '0', label: '禁用',},
+                {value: '1', label: '启用',}
+            ],
+
+            nowpage:1,
+            status:'',
+            jumpType:'',
+            firstclick:true,
+            clickserch:false,
+            //新增修改弹窗
+            attitle:'新增类型',
+            dialogTableVisible:false,
+            atobj:{
+                id:'',
+                name:'',
+                icon:'',
+                url:'',
+                iconUrl:'',
+                title:'',
+                jumpType:'',
+                sort:'',
+                status:'',
+                indexJoinCount:'',
+                desc:'',
+            },
+            typeselect2:'',
+            optionstype2: [
+                {value: '', label: '选择类型',},
+                {value: '1', label: 'app内部页跳转',},
+                {value: '2', label: '跳转网页',}
+            ],
+            statusselect2:'',
+            optionsstatus2: [
+                {value: '', label: '选择状态',},
+                {value: '0', label: '禁用',},
+                {value: '1', label: '启用',}
+            ],
+        },
+        methods:{
+            /*分页*/
+            clickpage(){
+                let _this = this
+                layui.use('laypage', function(){
+                    var laypage = layui.laypage;
+                    laypage.render({
+                        elem: 'showpage'
+                        ,theme: '#1E9FFF'
+                        ,limit: _this.pagesize
+                        ,count: _this.pagenum //数据总数，从服务端得到
+                        ,layout: [ 'prev', 'page', 'next', 'skip','count',]
+                        ,jump: function(obj, first){
+                            //obj包含了当前分页的所有参数，比如：
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            console.log(obj.limit); //得到每页显示的条数
+                            _this.nowpage = obj.curr
+                            if(!_this.firstclick){
+                                if(_this.clickserch){
+                                    _this.clickserch = false
+                                }else {
+                                    _this.getdata(false,false)
+                                }
+                            }else {
+                                _this.firstclick = false
+                            }
+                            //首次不执行
+                            if(!first){
+                                //do something
+                            }
+                        }
+                    });
+                });
+            },
+            addlistfn(){
+                this.attitle = '新增类型'
+                this.atobj = {
+                    id:'',
+                    name:'',
+                    icon:'',
+                    url:'',
+                    iconUrl:'',
+                    title:'',
+                    jumpType:'',
+                    sort:'',
+                    status:'',
+                    indexJoinCount:'',
+                    desc:'',
+                }
+                this.typeselect2 = ''
+                this.statusselect2 = ''
+                this.dialogTableVisible = true
+            },
+            handleChange(e){
+                let _this = this
+                var f= e.target.files
+                if(f.length==0){
+                    return false
+                }
+                var formData = new FormData();                       // 可以增加表单数据
+                formData.append("file", f[0]);
+                var index = layer.load(2);
+                $.ajax({
+                    url: urlval+"/file/multiUpload",
+                    data:formData,
+                    dataType:"text",
+                    type:"post",
+                    //这两个属性必须设置！！！！
+                    contentType: false,
+                    processData: false,
+                    headers:{'token':localStorage.getItem("token")},
+                    success: function (data) {
+                        layer.close(index);
+                        var data = JSON.parse(data)
+                        console.log(data)
+                        if(data.code==1){
+                            _this.atobj.iconUrl = data.data.fileUrls[0]
+                            _this.atobj.icon = data.data.keys[0]
+                        }
+
+                    },
+                    error: function (data) {
+                    }
+                });
+            },//上传图片
+            atsurefn(){
+                let _this = this
+                if(this.atobj.name==''){
+                    layer.msg('请输入名字')
+                    return false
+                }else if(!this.atobj.indexJoinCount){
+                    layer.msg('请输入参与人数')
+                    return false
+                }else if(this.atobj.url==''){
+                    layer.msg('请输入地址')
+                    return false
+                }else if(this.atobj.sort==''){
+                    layer.msg('请输入序号')
+                    return false
+                }else if(this.atobj.jumpType==''){
+                    layer.msg('请选择跳转类型')
+                    return false
+                }else if(this.atobj.status==''){
+                    if(this.atobj.status!=0){
+                        layer.msg('请选择状态')
+                        return false
+                    }
+                }else if(this.atobj.icon==''){
+                    layer.msg('请选择图片')
+                    return false
+                }
+                var obj = {
+                    id:this.atobj.id,
+                    name:this.atobj.name,
+                    icon:this.atobj.icon,
+                    url:this.atobj.url,
+                    jumpType:this.atobj.jumpType,
+                    sort:this.atobj.sort,
+                    status:this.atobj.status,
+                    indexJoinCount:this.atobj.indexJoinCount,
+                    desc:this.atobj.desc,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/common/indexMenuSaveOrUpdate',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "POST",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        _this.dialogTableVisible = false
+                        layer.msg(res.msg)
+                        if(res.code==1){
+                            _this.clickserch = true
+                            _this.getdata(true)
+                        }
+                    }
+                })
+            },
+            handleChangetype(){
+                if(this.typeselect.length>0){
+                    this.jumpType = this.typeselect[0]
+                }
+            },
+            handleChangetype2(){
+                if(this.typeselect2.length>0){
+                    this.atobj.jumpType = this.typeselect2[0]
+                }
+            },
+            handleChangestatus(){
+                if(this.statusselect.length>0){
+                    this.status = this.statusselect[0]
+                }
+            },
+            handleChangestatus2(){
+                if(this.statusselect2.length>0){
+                    this.atobj.status = this.statusselect2[0]
+                }
+            },
+            findClient(){
+                this.clickserch = true
+                this.getdata(true)
+            },
+            editfn(item){
+                if(item.jumpType==1){
+                    this.typeselect2=  ['1']
+                }else if(item.jumpType==2){
+                    this.typeselect2=  ['2']
+                }
+                console.log()
+                if(item.status==0){
+                    this.statusselect2=  ['0']
+                }else if(item.status==1){
+                    this.statusselect2=  ['1']
+                }
+                this.atobj = item
+                this.attitle = '修改类型'
+                this.dialogTableVisible = true
+            },//修改
+            delfn(item){
+                let _this = this
+                console.log(item)
+                this.$confirm('此操作将删除此条数据状态, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    var obj = {
+                        id:item.id,
+                    }
+                    obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                    var data = {
+                        param:obj,
+                    }
+                    $.ajax({
+                        url:urlval+'/common/indexMenuDel',//url地址：ip地址+端口号+接口路径
+                        data:data,
+                        type: "POST",
+                        headers:{'token':localStorage.getItem("token")},
+                        success:function (res) {
+                            console.log(res,'res')
+                            _this.$message({
+                                type: 'success',
+                                message: res.msg+'!'
+                            });
+                            if(res.code==1){
+                                _this.clickserch = true
+                                _this.getdata(true)
+                            }
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            getdata(type){
+                let _this = this
+                var obj = {
+                    pageSize:this.pagesize,
+                    pageNum:this.nowpage,
+                    status:this.status,
+                }
+                obj = JSON.stringify(obj)//这个转化数据是有些接口需要的 有些不需要转化  看公司看后端
+                var data = {
+                    param:obj,
+                }
+                $.ajax({
+                    url:urlval+'/common/indexMenus',//url地址：ip地址+端口号+接口路径
+                    data:data,
+                    type: "get",
+                    headers:{'token':localStorage.getItem("token")},
+                    success:function (res) {
+                        if(res.data.page.list){
+                            _this.tabledata = res.data.page.list
+                            console.log(_this.tabledata,'tabledata')
+                            _this.allpagenum= res.data.page.total
+                            _this.pagenum = res.data.page.total
+                            if(type){
+                                _this.clickpage()
+                            }
+                        }else {
+                            _this.tabledata = []
+                        }
+                    }
+                })
+            },
+        },
+        created(){
+            this.getdata(true)
+        }
+    })
+</script>
+</body>
+</html>
+
+

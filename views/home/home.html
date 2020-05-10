@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>提现管理列表</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../../san/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../san/style/admin.css" media="all">
+  <script src="../../san/style/js/vue.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../san/style/js/url.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+    .homecont{
+      width: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .toptitlebox{
+      width: 100%;
+      background-color: #fff;
+      padding: 0 15px;
+      box-sizing: border-box;
+      height: 65px;
+      line-height: 65px;
+    }
+    .cardbox{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    .cardlist{
+      width: 18%;
+      height: 120px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .listbox{
+      display: inline-block;
+    }
+    .listbox p{
+      color: white;
+    }
+    .listbox>:nth-child(1){
+      font-size: 25px;
+      font-weight: bolder;
+    }
+    .echartu{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .echaritem{
+      width: 48%;
+      padding: 10px 0;
+      box-sizing: border-box;
+    }
+
+  </style>
+</head>
+<body>
+<div class="layui-fluid homecont" id="app" v-cloak>
+  <div class="toptitlebox">欢迎访问<span style="color: #3399fe;margin: 0 3px">XX管理平台</span>，祝您工作愉快！</div>
+  <div style="width: 100%;margin-top: 50px">
+    <div class="cardbox">
+      <div class="cardlist" style="background-color: #FF7F00">
+        <div class="listbox">
+          <p>{{alldata.registUserCountToday.num}}</p>
+          <p>用户注册</p>
+        </div>
+      </div>
+      <div class="cardlist" style="background-color:#8B00FF">
+        <div class="listbox">
+          <p>{{alldata.dauToday.num}}</p>
+          <p>DAU</p>
+        </div>
+      </div>
+      <div class="cardlist" style="background-color: rgb(50,205,102)">
+        <div class="listbox">
+          <p>{{alldata.tjPublishTasksTodayCount.num}}</p>
+          <p>任务统计</p>
+        </div>
+      </div>
+      <div class="cardlist" style="background-color: #FF0000 ">
+        <div class="listbox">
+          <p>{{alldata.czSumToday.num}}</p>
+          <p>充值金额</p>
+        </div>
+      </div>
+      <div class="cardlist" style="background-color: #0000FF">
+        <div class="listbox">
+          <p>{{alldata.cashSumToday.num}}</p>
+          <p>提现金额</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="echartu">
+    <div class="echaritem">
+      <!-- 填充内容 -->
+      <p style="padding-left: 15px;width: 100%;box-sizing: border-box">用户注册</p>
+      <div class="block" style="height: 32px;margin-left: 15px;margin-top: 5px">
+        <el-date-picker
+                v-model="value1"
+                type="daterange"
+                @change="changetime1"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+      </div>
+      <div id="main1" style="width:100%;height: 400px"></div>
+    </div>
+    <div class="echaritem">
+      <!-- 填充内容 -->
+      <p style="padding-left: 15px;width: 100%;box-sizing: border-box">DAU</p>
+      <div class="block" style="height: 32px;margin-left: 15px;margin-top: 5px">
+        <el-date-picker
+                v-model="value2"
+                type="daterange"
+                @change="changetime2"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+      </div>
+      <div id="main2" style="width:100%;height: 400px"></div>
+    </div>
+    <div class="echaritem">
+      <!-- 填充内容 -->
+      <p style="padding-left: 15px;width: 100%;box-sizing: border-box">任务统计</p>
+      <div class="block" style="height: 32px;margin-left: 15px;margin-top: 5px">
+        <el-date-picker
+                v-model="value3"
+                type="daterange"
+                @change="changetime3"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+      </div>
+      <div id="main3" style="width:100%;height: 400px"></div>
+    </div>
+    <div class="echaritem">
+      <!-- 填充内容 -->
+      <p style="padding-left: 15px;width: 100%;box-sizing: border-box">充值金额</p>
+      <div class="block" style="height: 32px;margin-left: 15px;margin-top: 5px">
+        <el-date-picker
+                v-model="value4"
+                type="daterange"
+                @change="changetime4"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+      </div>
+      <div id="main4" style="width:100%;height: 400px"></div>
+    </div>
+    <div class="echaritem">
+      <!-- 填充内容 -->
+      <p style="padding-left: 15px;width: 100%;box-sizing: border-box">提现金额</p>
+      <div class="block" style="height: 32px;margin-left: 15px;margin-top: 5px">
+        <el-date-picker
+                v-model="value5"
+                type="daterange"
+                @change="changetime5"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+      </div>
+      <div id="main5" style="width:100%;height: 400px"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../san/layui/layui.js"></script>
+<script src="../../san/style/js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="../../san/style/js/jquery-3.3.1.min.js"></script>
+<script>
+  layui.config({
+    base: '../../san/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index','form']);
+</script>
+<script>
+  var urlval = geturl()
+  var app = new Vue({
+    el:'#app',
+    data:{
+      //搜索数据
+      value1: [new Date().getTime() - 3600 * 1000 * 24 * 6,new Date().getTime()],
+      value2: [new Date().getTime() - 3600 * 1000 * 24 * 6,new Date().getTime()],
+      value3: [new Date().getTime() - 3600 * 1000 * 24 * 6,new Date().getTime()],
+      value4: [new Date().getTime() - 3600 * 1000 * 24 * 6,new Date().getTime()],
+      value5: [new Date().getTime() - 3600 * 1000 * 24 * 6,new Date().getTime()],
+      //echart数据
+      valdata1:[],
+      valtime1:[],
+      valdata2:[],
+      valtime2:[],
+      valdata3:[],
+      valtime3:[],
+      valdata4:[],
+      valtime4:[],
+      valdata5:[],
+      valtime5:[],
+      //表头nav数据
+      alldata:{
+        registUserCountToday:0,
+        dauToday:0,
+        tjPublishTasksTodayCount:0,
+        czSumToday:0,
+        cashSumToday:0,
+      },
+    },
+    methods:{
+      changetime1(){
+        var start = this.timestampToTime(this.value1[0])
+        var end = this.timestampToTime(this.value1[1])
+        this.getdata(start,end,2)
+      },
+      changetime2(){
+        var start = this.timestampToTime(this.value2[0])
+        var end = this.timestampToTime(this.value2[1])
+        this.getdata(start,end,1)
+      },
+      changetime3(){
+        var start = this.timestampToTime(this.value3[0])
+        var end = this.timestampToTime(this.value3[1])
+        this.getdata(start,end,3)
+      },
+      changetime4(){
+        var start = this.timestampToTime(this.value4[0])
+        var end = this.timestampToTime(this.value4[1])
+        this.getdata(start,end,4)
+      },
+      changetime5(){
+        var start = this.timestampToTime(this.value5[0])
+        var end = this.timestampToTime(this.value5[1])
+        this.getdata(start,end,5)
+      },
+      timestampToTime(timestamp) {
+        if(timestamp!=null&&timestamp!=undefined) {
+          var date = '';
+          if (typeof timestamp == 'number') {
+            date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+          } else {
+            date = timestamp;
+          }
+          var Y = date.getFullYear() + '-';
+          var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+          var D = date.getDate() + ' ';
+          var h = date.getHours()
+          if (h < 10) {
+            h = '0' + h
+          }
+          h = h + ':';
+          var m = date.getMinutes()
+          if (m < 10) {
+            m = '0' + m
+          }
+          m = m + ':';
+          var s = date.getSeconds();
+          if (s < 10) {
+            s = '0' + s
+          }
+          return Y + M + D + h + m + s;
+        }
+      },
+      setmain1(){
+        var myChart = echarts.init(document.getElementById('main1'));
+        option = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: this.valtime1
+          },
+          yAxis: {
+            type: 'value'
+          },
+          color:['rgb(5,195,161)'],
+          series: [{
+            data: this.valdata1,
+            type: 'line',
+            areaStyle: {}
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option,true);
+      },
+      setmain2(){
+        var myChart = echarts.init(document.getElementById('main2'));
+        option = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data:this.valtime2,
+          },
+          yAxis: {
+            type: 'value'
+          },
+          color:['rgb(5,195,161)'],
+          series: [{
+            data: this.valdata2,
+            type: 'line',
+            areaStyle: {}
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option,true);
+      },
+      setmain3(){
+        var myChart = echarts.init(document.getElementById('main3'));
+        option = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: this.valtime3
+          },
+          yAxis: {
+            type: 'value'
+          },
+          color:['rgb(5,195,161)'],
+          series: [{
+            data: this.valdata3,
+            type: 'line',
+            areaStyle: {}
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option,true);
+      },
+      setmain4(){
+        var myChart = echarts.init(document.getElementById('main4'));
+        option = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: this.valtime4
+          },
+          yAxis: {
+            type: 'value'
+          },
+          color:['rgb(5,195,161)'],
+          series: [{
+            data: this.valdata4,
+            type: 'line',
+            areaStyle: {}
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option,true);
+      },
+      setmain5(){
+        var myChart = echarts.init(document.getElementById('main5'));
+        option = {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: this.valtime5
+          },
+          yAxis: {
+            type: 'value'
+          },
+          color:['rgb(5,195,161)'],
+          series: [{
+            data:this.valdata5,
+            type: 'line',
+            areaStyle: {}
+          }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option,true);
+      },
+      setdata(obj){
+        //设置注册数据
+        this.valdata1 = []
+        this.valtime1 = []
+        var zhuce = obj.tjRegistUsers
+        for(let i = 0;i<zhuce.length;i++){
+          this.valdata1.push(zhuce[i].num)
+          this.valtime1.push(zhuce[i].day)
+        }
+        //设置DAU
+        var dau = obj.dau
+        this.valdata2 = []
+        this.valtime2 = []
+        for(let i = 0;i<dau.length;i++){
+          this.valdata2.push(dau[i].num)
+          this.valtime2.push(dau[i].day)
+        }
+        //设置任务统计
+        this.valdata3 = []
+        this.valtime3 = []
+        var task = obj.tjPublishTasks
+        for(let i = 0;i<task.length;i++){
+          this.valdata3.push(task[i].num)
+          this.valtime3.push(task[i].day)
+        }
+        //设置充值金额
+        this.valdata4 = []
+        this.valtime4 = []
+        var chongzhi = obj.tjCzSum
+        for(let i = 0;i<chongzhi.length;i++){
+          this.valdata4.push(chongzhi[i].num)
+          this.valtime4.push(chongzhi[i].day)
+        }
+        //设置提现金额
+        this.valdata5 = []
+        this.valtime5 = []
+        var tixian = obj.tjCashSum
+        for(let i = 0;i<tixian.length;i++){
+          this.valdata5.push(tixian[i].num)
+          this.valtime5.push(tixian[i].day)
+        }
+        this.setmain1()
+        this.setmain2()
+        this.setmain3()
+        this.setmain4()
+        this.setmain5()
+        // this.valdata1
+      },
+      getdata(start,end,type){
+        let _this = this
+        var obj = {
+          startDate:start,
+          endDate:end,
+          type:type,
+        }
+        obj = JSON.stringify(obj)
+        var data = {
+          param:obj
+        }
+        $.ajax({
+          url:urlval+'/common/index',//url地址：ip地址+端口号+接口路径
+          data:data,
+          type: "get",
+          headers:{'Content-Type':'application/json;charset=utf8','token':localStorage.getItem("token")},
+          success:function (res) {
+            if(res.code==1){
+              if(type==0){
+                _this.alldata = res.data
+                _this.setdata(res.data)
+              }else if(type==1){
+                console.log(res.data.dau)
+                _this.valdata2 = []
+                _this.valtime2 = []
+                var dau = res.data.dau
+                for(let i = 0;i<dau.length;i++){
+                  _this.valdata2.push(dau[i].num)
+                  _this.valtime2.push(dau[i].day)
+                }
+                _this.setmain2()
+              }else if(type==2){
+                _this.valdata1 = []
+                _this.valtime1 = []
+                var zhuce = res.data.tjRegistUsers
+                for(let i = 0;i<zhuce.length;i++){
+                  _this.valdata1.push(zhuce[i].num)
+                  _this.valtime1.push(zhuce[i].day)
+                }
+                _this.setmain1()
+              }else if(type==3){
+                _this.valdata3 = []
+                _this.valtime3 = []
+                var task = res.data.tjPublishTasks
+                for(let i = 0;i<task.length;i++){
+                  _this.valdata3.push(task[i].num)
+                  _this.valtime3.push(task[i].day)
+                }
+                _this.setmain3()
+              }else if(type==4){
+                _this.valdata4 = []
+                _this.valtime4 = []
+                var chongzhi = res.data.tjCzSum
+                for(let i = 0;i<chongzhi.length;i++){
+                  _this.valdata4.push(chongzhi[i].num)
+                  _this.valtime4.push(chongzhi[i].day)
+                }
+                _this.setmain4()
+              }else if(type==5){
+                _this.valdata5 = []
+                _this.valtime5 = []
+                var tixian = res.data.tjCashSum
+                for(let i = 0;i<tixian.length;i++){
+                  _this.valdata5.push(tixian[i].num)
+                  _this.valtime5.push(tixian[i].day)
+                }
+                _this.setmain5()
+              }
+            }else {
+              layer.msg(res.msg)
+            }
+          }
+        })
+      },
+    },
+    mounted(){
+    },
+    created(){
+      // this.gettime1()
+      var start = this.timestampToTime(new Date().getTime() - 3600 * 1000 * 24 * 6)
+      var end = this.timestampToTime(new Date().getTime())
+      this.getdata(start,end,0)
+    }
+  })
+</script>
+</body>
+</html>
